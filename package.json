@@ -1,0 +1,30 @@
+{
+  "name": "aitji.xyz",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev-build": "node build.js --watch",
+
+    "build_http": "npx serve public",
+    "build_https": "npx serve public --ssl-cert localhost+2.pem --ssl-key localhost+2-key.pem",
+
+    "http": "node server.js",
+    "https": "node server.js --https"
+  },
+  "imports": {
+    "#api/*": "./api/*"
+  },
+  "keywords": [],
+  "author": "aitji",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "esbuild": "^0.27.3",
+    "html-minifier-terser": "^7.2.0",
+    "ignore": "^7.0.5",
+    "terser": "^5.46.0"
+  }
+}
