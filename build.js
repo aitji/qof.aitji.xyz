@@ -11,6 +11,7 @@ if (fs.existsSync('.gitignore')) ig.add(fs.readFileSync('.gitignore', 'utf8'))
 const SRC = 'src'
 const OUT = 'public'
 const WATCH = process.argv.includes('--watch')
+if (!WATCH) ig.add('dev/')
 
 const ensure = p => fs.mkdirSync(p, { recursive: true })
 
