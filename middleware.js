@@ -9,7 +9,16 @@ async function getSpaRoutes(request) {
         const url = new URL('/routes.json', request.url)
         const res = await fetch(url + "?v=" + version)
         const data = await res.json()
-        cacheRoutes = data.routes.map(r => r.path)
+        const collect = routes => {
+            let out = []
+            for (const r of routes) {
+                out.push(r.slug)
+                if (r.pages) out = out.concat(collect(r.pages))
+            }
+            return out
+        }
+
+        cacheRoutes = collect(data.routes)
         return cacheRoutes
     } catch (e) {
         console.error('failed to load routes:', e)
