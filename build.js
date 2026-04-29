@@ -88,7 +88,7 @@ const minifyHTMLFile = async file => {
 const minifyJSFile = async (src, out) => {
     try {
         const code = fs.readFileSync(src, 'utf8')
-        const r = await minifyJS(code, {
+        let r = await minifyJS(code, {
             compress: {
                 passes: 3,
                 drop_console: true,
@@ -98,6 +98,7 @@ const minifyJSFile = async (src, out) => {
             format: { comments: false }
         })
 
+        if (WATCH) r.code = r.code.replaceAll('Domain=.aitji.xyz; ', '')
         fs.writeFileSync(out, banner.js + r.code)
     } catch (error) { console.error(`[HTML] error processing ${file}: ${error.message}`) }
 }

@@ -10,13 +10,23 @@ const OUT = 'public'
 
 let spaRoutes = []
 
+// recursively collect every slug from nested routes
+const collectSlugs = (routes) => {
+    const slugs = []
+    for (const r of routes) {
+        if (r.slug) slugs.push(r.slug)
+        if (r.pages?.length) slugs.push(...collectSlugs(r.pages))
+    }
+    return slugs
+}
+
 // fetch spa routes from routes.json
 const loadSpaRoutes = () => {
     try {
         const routesFile = path.join('src', 'routes.json')
         if (fs.existsSync(routesFile)) {
             const data = JSON.parse(fs.readFileSync(routesFile, 'utf8'))
-            spaRoutes = data.routes.map(r => r.path)
+            spaRoutes = collectSlugs(data.routes)
             console.log(`[server] loaded spa routes: ${spaRoutes.join(', ')}`)
         }
     } catch (e) {

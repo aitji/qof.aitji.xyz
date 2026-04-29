@@ -1,1 +1,75 @@
-{ "routes": [] }
+{
+    "routes": [
+        {
+            "title": "Home",
+            "slug": "/",
+            "path": "/docs/home.html"
+        },
+        {
+            "title": "About",
+            "slug": "/w/About",
+            "path": "/docs/about.html"
+        },
+        {
+            "title": "Modules",
+            "slug": "/w/Modules",
+            "path": "/docs/modules.html",
+            "pages": [
+                {
+                    "title": "Dynamic Light",
+                    "slug": "/w/Dynamic_Light",
+                    "path": "/docs/light.html"
+                },
+                {
+                    "title": "Repair Anvil",
+                    "slug": "/w/Repair_Anvil",
+                    "path": "/docs/anvil.html"
+                },
+                {
+                    "title": "Parent",
+                    "slug": "/w/parent",
+                    "path": "/docs/parent.html",
+                    "pages": [
+                        {
+                            "title": "Children 1",
+                            "slug": "/w/children1",
+                            "path": "/docs/children1.html"
+                        },
+                        {
+                            "title": "Children 2",
+                            "slug": "/w/children2",
+                            "path": "/docs/children2.html"
+                        },
+                        {
+                            "title": "Children 3",
+                            "slug": "/w/children3",
+                            "path": "/docs/children3.html"
+                        },
+                        {
+                            "title": "Children 4",
+                            "slug": "/w/children4",
+                            "path": "/docs/children4.html"
+                        },
+                        {
+                            "title": "Parent",
+                            "slug": "/w/parent2",
+                            "path": "/docs/parent2.html",
+                            "pages": [
+                                {
+                                    "title": "Children 5",
+                                    "slug": "/w/children5",
+                                    "path": "/docs/children5.html"
+                                },
+                                {
+                                    "title": "Children 6",
+                                    "slug": "/w/children6",
+                                    "path": "/docs/children6.html"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

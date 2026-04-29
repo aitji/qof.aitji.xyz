@@ -41,7 +41,6 @@ body {
 /* content */
 main,
 article {
-    max-width: var(--content-max);
     margin-inline: auto;
     padding-inline: var(--sp-5);
     padding-block: var(--sp-8);
@@ -457,8 +456,7 @@ table {
     font-family: var(--font-ui);
     color: var(--color-text);
     background-color: var(--color-td-bg);
-    border-radius: var(--r-md);
-    /* clip corners to radius */
+
     overflow: hidden;
     margin-block: var(--sp-6);
 }
