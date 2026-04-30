@@ -1,4 +1,5 @@
 {
+    "$schema": "./routes.schema.json",
     "routes": [
         {
             "title": "Home",
@@ -6,9 +7,31 @@
             "path": "/docs/home.html"
         },
         {
-            "title": "About",
-            "slug": "/w/About",
-            "path": "/docs/about.html"
+            "title": "Getting Started",
+            "slug": "/w/Getting_Started",
+            "path": "/docs/getting-started.html",
+            "pages": [
+                {
+                    "title": "Requirements",
+                    "slug": "/w/Getting_Started/Requirements",
+                    "path": "/docs/requirements.html"
+                },
+                {
+                    "title": "Installation",
+                    "slug": "/w/Getting_Started/Installation",
+                    "path": "/docs/installation.html"
+                },
+                {
+                    "title": "Enabling Beta APIs",
+                    "slug": "/w/Getting_Started/Beta_APIs",
+                    "path": "/docs/beta-apis.html"
+                },
+                {
+                    "title": "Pack Settings Panel",
+                    "slug": "/w/Getting_Started/Pack_Settings",
+                    "path": "/docs/pack-settings.html"
+                }
+            ]
         },
         {
             "title": "Modules",
@@ -18,58 +41,145 @@
                 {
                     "title": "Dynamic Light",
                     "slug": "/w/Dynamic_Light",
-                    "path": "/docs/light.html"
+                    "path": "/docs/dynamic-light.html"
                 },
                 {
-                    "title": "Repair Anvil",
-                    "slug": "/w/Repair_Anvil",
-                    "path": "/docs/anvil.html"
+                    "title": "Anvil Repairing",
+                    "slug": "/w/Anvil_Repairing",
+                    "path": "/docs/anvil-repairing.html"
                 },
                 {
-                    "title": "Parent",
-                    "slug": "/w/parent",
-                    "path": "/docs/parent.html",
+                    "title": "Double Door",
+                    "slug": "/w/Double_Door",
+                    "path": "/docs/double-door.html"
+                },
+                {
+                    "title": "Wet Concrete Powder",
+                    "slug": "/w/Wet_Concrete_Powder",
+                    "path": "/docs/wet-concrete-powder.html"
+                },
+                {
+                    "title": "Cauldron+",
+                    "slug": "/w/Cauldron",
+                    "path": "/docs/cauldron.html"
+                },
+                {
+                    "title": "Composter+",
+                    "slug": "/w/Composter",
+                    "path": "/docs/composter.html"
+                },
+                {
+                    "title": "Carrying Container",
+                    "slug": "/w/Carrying_Container",
+                    "path": "/docs/carrying-container.html"
+                },
+                {
+                    "title": "Unwaxed Sign",
+                    "slug": "/w/Unwaxed_Sign",
+                    "path": "/docs/unwaxed-sign.html"
+                },
+                {
+                    "title": "Offhand",
+                    "slug": "/w/Offhand",
+                    "path": "/docs/offhand.html"
+                },
+                {
+                    "title": "Harvest",
+                    "slug": "/w/Harvest",
+                    "path": "/docs/harvest.html"
+                },
+                {
+                    "title": "Mob Loot+",
+                    "slug": "/w/Mob_Loot",
+                    "path": "/docs/mob-loot.html",
                     "pages": [
                         {
-                            "title": "Children 1",
-                            "slug": "/w/children1",
-                            "path": "/docs/children1.html"
+                            "title": "Goat",
+                            "slug": "/w/Mob_Loot/Goat",
+                            "path": "/docs/loot-goat.html"
                         },
                         {
-                            "title": "Children 2",
-                            "slug": "/w/children2",
-                            "path": "/docs/children2.html"
+                            "title": "Silverfish",
+                            "slug": "/w/Mob_Loot/Silverfish",
+                            "path": "/docs/loot-silverfish.html"
                         },
                         {
-                            "title": "Children 3",
-                            "slug": "/w/children3",
-                            "path": "/docs/children3.html"
+                            "title": "Sniffer",
+                            "slug": "/w/Mob_Loot/Sniffer",
+                            "path": "/docs/loot-sniffer.html"
                         },
                         {
-                            "title": "Children 4",
-                            "slug": "/w/children4",
-                            "path": "/docs/children4.html"
+                            "title": "Piglin Brute",
+                            "slug": "/w/Mob_Loot/Piglin_Brute",
+                            "path": "/docs/loot-piglin-brute.html"
+                        }
+                    ]
+                },
+                {
+                    "title": "Recipe+",
+                    "slug": "/w/Recipe",
+                    "path": "/docs/recipe.html",
+                    "pages": [
+                        {
+                            "title": "Smelting Recipes",
+                            "slug": "/w/Recipe/Smelting",
+                            "path": "/docs/recipe-smelting.html"
                         },
                         {
-                            "title": "Parent",
-                            "slug": "/w/parent2",
-                            "path": "/docs/parent2.html",
-                            "pages": [
-                                {
-                                    "title": "Children 5",
-                                    "slug": "/w/children5",
-                                    "path": "/docs/children5.html"
-                                },
-                                {
-                                    "title": "Children 6",
-                                    "slug": "/w/children6",
-                                    "path": "/docs/children6.html"
-                                }
-                            ]
+                            "title": "Crafting Recipes",
+                            "slug": "/w/Recipe/Crafting",
+                            "path": "/docs/recipe-crafting.html"
+                        },
+                        {
+                            "title": "Stonecutter Recipes",
+                            "slug": "/w/Recipe/Stonecutter",
+                            "path": "/docs/recipe-stonecutter.html"
+                        },
+                        {
+                            "title": "Removed Recipes",
+                            "slug": "/w/Recipe/Removed",
+                            "path": "/docs/recipe-removed.html"
                         }
                     ]
                 }
             ]
+        },
+        {
+            "title": "Changelog",
+            "slug": "/w/Changelog",
+            "path": "/docs/changelog.html",
+            "pages": [
+                {
+                    "title": "v1.5.0 – Well Equipped",
+                    "slug": "/w/Changelog/v1.5.0",
+                    "path": "/docs/changelog-v1-5-0.html"
+                },
+                {
+                    "title": "v1.4.0 – Seamless",
+                    "slug": "/w/Changelog/v1.4.0",
+                    "path": "/docs/changelog-v1-4-0.html"
+                },
+                {
+                    "title": "v1.3.0 – In Sync",
+                    "slug": "/w/Changelog/v1.3.0",
+                    "path": "/docs/changelog-v1-3-0.html"
+                },
+                {
+                    "title": "v1.2.0 – Take Control",
+                    "slug": "/w/Changelog/v1.2.0",
+                    "path": "/docs/changelog-v1-2-0.html"
+                },
+                {
+                    "title": "v1.1.0 – Subtle Shift",
+                    "slug": "/w/Changelog/v1.1.0",
+                    "path": "/docs/changelog-v1-1-0.html"
+                }
+            ]
+        },
+        {
+            "title": "Troubleshooting",
+            "slug": "/w/Troubleshooting",
+            "path": "/docs/troubleshooting.html"
         }
     ]
 }

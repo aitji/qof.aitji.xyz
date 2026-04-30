@@ -1,0 +1,47 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "routes"
+    ],
+    "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        "routes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/route"
+            }
+        }
+    },
+    "$defs": {
+        "route": {
+            "type": "object",
+            "required": [
+                "title",
+                "slug",
+                "path"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "pages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/route"
+                    }
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
