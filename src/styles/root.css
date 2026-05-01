@@ -14,9 +14,9 @@
 
     /* light */
     --color-bg: #ffffff;
-    --color-bg-2: #f7f8fa;
-    --color-bg-3: #eef0f4;
-    --color-surface: #ffffff;
+    --color-bg-2: #f5f5f9;
+    --color-bg-3: #ffffff;
+    --color-surface: #e1e1e7;
     --color-surface-raised: #f7f8fa;
     --color-surface-overlay: rgba(255, 255, 255, 0.85);
 
@@ -25,15 +25,15 @@
     --color-border-strong: #b0b8c4;
 
     --color-text: #1a1d24;
-    --color-text-2: #4a5568;
-    --color-text-3: #7a8694;
+    --color-text-2: #2c3039;
+    --color-text-3: #4b535c;
     --color-text-inverse: #ffffff;
     --color-text-link: #2563eb;
     --color-text-link-hover: #1d4ed8;
 
     /* code */
     --color-code-bg: #f0f2f5;
-    --color-code-text: #c7254e;
+    --color-code-text: #e5325f;
     --color-code-border: #dde1e7;
     --color-pre-bg: #1c2128;
     --color-pre-text: #cdd9e5;
@@ -51,7 +51,7 @@
 
     /* blockquote */
     --color-bq-border: var(--hi-strong);
-    --color-bq-bg: #fffcec;
+    --color-bq-bg: #fffce8;
     --color-bq-text: #4a5568;
 
     /* image */
@@ -133,10 +133,10 @@
 html[data-theme="dark"] { color-scheme: light; }
 html[data-theme="dark"] {
     color-scheme: dark;
-    --color-bg: #0d1117;
-    --color-bg-2: #161b22;
-    --color-bg-3: #1c2128;
-    --color-surface: #161b22;
+    --color-bg: #161b22;
+    --color-bg-2: #0e1217;
+    --color-bg-3: #21262d;
+    --color-surface: #0a0d11;
     --color-surface-raised: #1c2128;
     --color-surface-overlay: rgba(13, 17, 23, 0.88);
 
@@ -145,8 +145,8 @@ html[data-theme="dark"] {
     --color-border-strong: #484f58;
 
     --color-text: #e6edf3;
-    --color-text-2: #8b949e;
-    --color-text-3: #545d68;
+    --color-text-2: #9ca6b1;
+    --color-text-3: #79838f;
     --color-text-inverse: #0d1117;
     --color-text-link: #58a6ff;
     --color-text-link-hover: #79b8ff;
@@ -168,8 +168,8 @@ html[data-theme="dark"] {
     --color-table-border: #30363d;
 
     --color-bq-border: var(--hi-dim);
-    --color-bq-bg: #161306;
-    --color-bq-text: #8b949e;
+    --color-bq-bg: #1b1707;
+    --color-bq-text: #a3abb4;
 
     --color-img-border: #30363d;
     --color-img-caption: #545d68;
