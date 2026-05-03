@@ -224,9 +224,8 @@
         a.dataset.slug = route.slug
         a.addEventListener('click', (e) => {
             e.preventDefault()
-            if (route.pages?.length) li.classList.add('open')
-            closeMobileSidebar()
-            router.navigate(route.slug)
+            if (route.pages?.length && router.currentSlug === route.slug) li.classList.toggle('open')
+            else router.navigate(route.slug)
         })
 
         const linkText = document.createElement('span')
@@ -246,13 +245,16 @@
             const chevron = document.createElement('button')
             chevron.className = 'nav-chevron'
             chevron.setAttribute('aria-label', `Toggle ${route.title}`)
+            chevron.setAttribute('aria-hidden', 'true')
+            chevron.setAttribute('tabindex', '-1')
 
-            const img = document.createElement('img')
-            img.src = '/img/line.svg'
-            img.width = 12
-            img.height = 12
-            img.alt = 'decorative line'
-            chevron.appendChild(img)
+            chevron.addEventListener('click', (e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                li.classList.toggle('open')
+            })
+
+            row.appendChild(chevron)
 
             li.appendChild(row)
             li.appendChild(_buildList(route.pages, depth + 1))
@@ -270,12 +272,22 @@
 
         link.classList.add('active')
 
-        let parent = link.closest('.nav-item')?.parentElement?.closest('.nav-item')
-        while (parent) {
-            parent.classList.add('open')
-            parent = parent.parentElement?.closest('.nav-item')
+        const ancestors = new Set()
+        let ancestor = link.closest('.nav-item')?.parentElement?.closest('.nav-item')
+        while (ancestor) {
+            ancestors.add(ancestor)
+            ancestor = ancestor.parentElement?.closest('.nav-item')
         }
 
+        const selfItem = link.closest('.nav-item')
+        if (selfItem?.classList.contains('has-children')) ancestors.add(selfItem)
+
+        document.querySelectorAll('.nav-item.open').forEach(el => {
+            if (!ancestors.has(el))
+                el.classList.remove('open')
+        })
+
+        ancestors.forEach(el => el.classList.add('open'))
         link.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
     }
 

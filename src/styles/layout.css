@@ -419,28 +419,7 @@ html[data-theme="dark"] .nav-row:has(.nav-link.active) {
 
 /* chevron */
 .nav-chevron {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    margin-right: 2px;
-    border-radius: var(--r-sm);
-    border: none;
-    background: none;
-    color: var(--color-text-3);
-    cursor: pointer;
-    transition: color var(--ease-fast), transform var(--ease-base);
-    transform: rotate(-90deg);
-}
-
-.nav-chevron:hover {
-    color: var(--color-text-2);
-}
-
-.nav-item.open>.nav-row>.nav-chevron {
-    transform: rotate(0deg);
+    display: none;
 }
 
 /* nested children */
