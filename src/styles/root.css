@@ -64,7 +64,8 @@
 
     /* selection */
     --color-selection-bg: #fff1ac;
-    --color-selection-text: #1a0d00; /* 1a1200 ? */
+    --color-selection-text: #1a0d00;
+    /* 1a1200 ? */
 
     /* typography */
     --font-sans: "Liberation Sans", Arial, Helvetica, FreeSans, sans-serif;
@@ -130,7 +131,10 @@
 }
 
 /* overriden */
-html[data-theme="dark"] { color-scheme: light; }
+html[data-theme="dark"] {
+    color-scheme: light;
+}
+
 html[data-theme="dark"] {
     color-scheme: dark;
     --color-bg: #161b22;
@@ -185,4 +189,28 @@ html[data-theme="dark"] {
     --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
     --shadow-hi: 0 0 0 3px rgba(241, 214, 82, 0.35);
+}
+
+@font-face {
+    font-family: 'Libertinus Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/img/font/latin-400.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'Libertinus Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/img/font/latin-italic-400.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'Libertinus Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/img/font/latin-700.woff2") format('woff2');
 }
