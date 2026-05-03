@@ -25,6 +25,12 @@
     border-radius: var(--r-xs);
 }
 
+/* focus ignore */
+#main-content:focus,
+#main-content:focus-visible {
+    outline: none !important;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
