@@ -1,9 +1,44 @@
 <main>
-    <h2>
-        TypeScript files in Behavior Pack could not load properly.
-    </h2>
-    <blockquote>
-        <p>Yeah, me neither.</p>
-        <cite>PickerTH 12</cite>
-    </blockquote>
+    <h1>Troubleshooting</h1>
+    <p>
+        A list of known issues and how to resolve them. If your problem isn't listed here,
+        open an issue on <a href="https://github.com/aitji/QoF">GitHub</a> or reach out to
+        <a href="https://github.com/aitji">@aitji</a> directly.
+    </p>
+
+    <h2>In-Game</h2>
+    <dl>
+        <dt>QoF doesn't seem to be doing anything in-game</dt>
+        <dd>
+            Make sure the <abbr title="Experimental Application Programming Interface">Beta APIs</abbr> is enabled under
+            <kbd>Experiments</kbd> in your world settings.
+            This is the most common cause — QoF will warn you in-game and won't work without it.
+            See <a href="/w/Installation">Installation -> Step 4</a> for guidance.
+        </dd>
+    </dl>
+
+    <h2>Installation</h2>
+    <dl>
+        <dt>The <code>.mcaddon</code> file didn't open Minecraft</dt>
+        <dd>
+            Try opening Minecraft first, then tap the file from your file manager or downloads.
+            On <strong>Android</strong> you may need to set Minecraft as the default app for
+            <code>.mcaddon</code> files.
+        </dd>
+
+        <dt>I updated QoF but my world still uses the old version</dt>
+        <dd>
+            Re-import the new <code>.mcaddon</code> file, then go back into your world's
+            <kbd>Add-Ons</kbd> settings, remove the old version, and apply the new one.
+            Existing worlds do not update automatically.
+        </dd>
+    </dl>
+
+    <hr>
+
+    <p>
+        Still stuck? Open an issue on
+        <a href="https://github.com/aitji/QoF">GitHub</a> or contact
+        <a href="https://github.com/aitji">@aitji</a>.
+    </p>
 </main>

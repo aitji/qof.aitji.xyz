@@ -7,81 +7,66 @@
             "path": "/docs/home.html"
         },
         {
-            "title": "Getting Started",
-            "slug": "/w/Getting_Started",
-            "path": "/docs/getting-started.html",
+            "title": "Installation",
+            "slug": "/w/Installation",
+            "path": "/docs/installation.html",
             "pages": [
                 {
-                    "title": "Requirements",
-                    "slug": "/w/Getting_Started/Requirements",
-                    "path": "/docs/requirements.html"
-                },
-                {
-                    "title": "Installation",
-                    "slug": "/w/Getting_Started/Installation",
-                    "path": "/docs/installation.html"
-                },
-                {
-                    "title": "Enabling Beta APIs",
-                    "slug": "/w/Getting_Started/Beta_APIs",
-                    "path": "/docs/beta-apis.html"
-                },
-                {
-                    "title": "Pack Settings Panel",
-                    "slug": "/w/Getting_Started/Pack_Settings",
-                    "path": "/docs/pack-settings.html"
+                    "title": "Settings Panel",
+                    "slug": "/w/Settings",
+                    "path": "/docs/settings.html"
                 }
             ]
         },
         {
             "title": "Modules",
             "slug": "/w/Modules",
-            "path": "/docs/modules.html",
+            "path": "/docs/modules/modules.html",
             "pages": [
                 {
                     "title": "Dynamic Light",
                     "slug": "/w/Dynamic_Light",
-                    "path": "/docs/dynamic-light.html"
+                    "path": "/docs/modules/dynamic-light.html"
                 },
                 {
                     "title": "Anvil Repairing",
                     "slug": "/w/Anvil_Repairing",
-                    "path": "/docs/anvil-repairing.html"
+                    "path": "/docs/modules/anvil-repairing.html"
                 },
                 {
                     "title": "Double Door",
                     "slug": "/w/Double_Door",
-                    "path": "/docs/double-door.html"
+                    "path": "/docs/modules/double-door.html"
                 },
                 {
                     "title": "Wet Concrete Powder",
                     "slug": "/w/Wet_Concrete_Powder",
-                    "path": "/docs/wet-concrete-powder.html"
+                    "path": "/docs/modules/wet-concrete-powder.html"
                 },
                 {
                     "title": "Cauldron+",
                     "slug": "/w/Cauldron",
-                    "path": "/docs/cauldron.html"
+                    "path": "/docs/modules/cauldron.html"
                 },
                 {
                     "title": "Composter+",
                     "slug": "/w/Composter",
-                    "path": "/docs/composter.html"
+                    "path": "/docs/modules/composter.html"
                 },
                 {
                     "title": "Carrying Container",
                     "slug": "/w/Carrying_Container",
-                    "path": "/docs/carrying-container.html"
+                    "path": "/docs/modules/carrying-container.html"
                 },
                 {
                     "title": "Unwaxed Sign",
                     "slug": "/w/Unwaxed_Sign",
-                    "path": "/docs/unwaxed-sign.html"
+                    "path": "/docs/modules/unwaxed-sign.html"
                 },
                 {
                     "title": "Offhand",
                     "slug": "/w/Offhand",
-                    "path": "/docs/offhand.html"
+                    "path": "/docs/modules/offhand.html"
                 },
                 {
                     "title": "Harvest",

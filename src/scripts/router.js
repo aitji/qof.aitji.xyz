@@ -157,10 +157,9 @@
             } catch (err) {
                 console.error(`[router] failed to load "${filePath}":`, err)
                 progress.error()
-                this.contentEl.innerHTML = this._errorHTML(
-                    'Page not found',
-                    `Could not load <code>${filePath}</code>`
-                )
+
+                const html = await this._loadHTML("/418.html")
+                this._render(html)
             }
         },
 
@@ -182,14 +181,30 @@
         },
 
         _errorHTML(title, detail) {
-            return `<main>
+            return `
+            <main>
                 <h2>${title}</h2>
-                <p style="color: var(--color-text-2)">${detail}</p>
+                <p>${detail}</p>
             </main>`
         },
 
         // public api
         navigate(slug) { this._navigateTo(slug, true) },
+
+        async initSidebar() {
+            let config
+            try {
+                const res = await fetch(ROUTES_URL + (CACHE_VERSION ? '?v=' + CACHE_VERSION : ''))
+                if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                config = await res.json()
+            } catch (err) {
+                console.error('[router] initSidebar: failed to load routes.json:', err)
+                return
+            }
+            this._rootRoutes = config.routes
+            this._flattenRoutes(config.routes)
+            buildSidebar(config.routes)
+        },
     }
 
     // sidebar
@@ -211,6 +226,11 @@
     }
 
     function _buildItem(route, depth) {
+        const clickEvent = (e) => {
+            e.preventDefault()
+            if (route.pages?.length && router.currentSlug === route.slug) li.classList.toggle('open')
+            else router.navigate(route.slug)
+        }
         const li = document.createElement('li')
         li.className = 'nav-item'
         li.dataset.slug = route.slug
@@ -222,11 +242,7 @@
         a.className = 'nav-link'
         a.href = route.slug
         a.dataset.slug = route.slug
-        a.addEventListener('click', (e) => {
-            e.preventDefault()
-            if (route.pages?.length && router.currentSlug === route.slug) li.classList.toggle('open')
-            else router.navigate(route.slug)
-        })
+        a.addEventListener('click', (e) => clickEvent(e))
 
         const linkText = document.createElement('span')
         linkText.className = 'nav-link-text'
@@ -240,6 +256,7 @@
             const badge = document.createElement('span')
             badge.className = 'nav-badge'
             badge.textContent = route.pages.length
+            badge.addEventListener('click', (e) => clickEvent(e))
             row.appendChild(badge)
 
             const chevron = document.createElement('button')
@@ -367,6 +384,7 @@
             return chain ? chain.join(' > ') : ''
         }
 
+
         function renderResults(query) {
             const q = query.trim().toLowerCase()
             activeIdx = -1
@@ -384,13 +402,43 @@
             resultsEl.classList.add('visible')
             resultsEl.innerHTML = ''
 
-            const matches = router.allRoutes.filter(r =>
-                r.title.toLowerCase().includes(q) ||
-                r.slug.toLowerCase().includes(q)
-            )
+            const ql = q.toLowerCase()
+            const fuse = new Fuse(router.allRoutes, {
+                keys: ['title', 'slug'],
+                threshold: 0.45,
+                ignoreLocation: true,
+                includeScore: true
+            })
 
-            if (countEl) countEl.textContent = matches.length
-            if (!matches.length) {
+            const sorted = fuse.search(q)
+                .map(r => ({ item: r.item, score: r.score ?? 1 }))
+                .sort((a, b) => {
+                    const aTitle = a.item.title.toLowerCase()
+                    const bTitle = b.item.title.toLowerCase()
+
+                    // match
+                    const aExact = aTitle === ql
+                    const bExact = bTitle === ql
+                    if (aExact !== bExact) return aExact ? -1 : 1
+
+                    // starts
+                    const aStarts = aTitle.startsWith(ql)
+                    const bStarts = bTitle.startsWith(ql)
+                    if (aStarts !== bStarts) return aStarts ? -1 : 1
+
+                    // boundary
+                    const re = new RegExp(`\\b${ql}`)
+                    const aWord = re.test(aTitle)
+                    const bWord = re.test(bTitle)
+                    if (aWord !== bWord) return aWord ? -1 : 1
+
+                    // fuse score
+                    return a.score - b.score
+                })
+                .map(r => r.item)
+
+            if (countEl) countEl.textContent = sorted.length
+            if (!sorted.length) {
                 const empty = document.createElement('div')
                 empty.className = 'search-empty'
                 const strong = document.createElement('strong')
@@ -404,7 +452,7 @@
                 return
             }
 
-            matches.forEach((route, i) => {
+            sorted.forEach((route, i) => {
                 const item = document.createElement('div')
                 item.className = 'search-result-item'
                 item.setAttribute('role', 'option')
@@ -444,10 +492,10 @@
         function setActive(idx) {
             const items = resultsEl.querySelectorAll('.search-result-item')
             items.forEach(el => el.classList.remove('active-result'))
-            activeIdx = Math.max(-1, Math.min(idx, items.length - 1))
+            activeIdx = Math.max(0, Math.min(idx, items.length - 1))
             if (activeIdx >= 0) {
                 items[activeIdx].classList.add('active-result')
-                items[activeIdx].scrollIntoView({ block: 'nearest' })
+                items[activeIdx].scrollIntoView({ block: 'center' })
             }
         }
 
@@ -485,7 +533,8 @@
     function initCollapse() {
         const btn = document.getElementById('btn-collapse')
         if (!btn) return
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault()
             document.querySelectorAll('.nav-item.open').forEach(el => el.classList.remove('open'))
         })
     }
@@ -520,7 +569,6 @@
         initMobileSidebar()
         initSearch()
         initCollapse()
-        router.init()
     })
 
     window.router = router

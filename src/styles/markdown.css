@@ -209,18 +209,26 @@ abbr[title] {
 }
 
 sup {
-    font-size: 0.7em;
     vertical-align: super;
     line-height: 0;
 }
 
 sup a {
-    text-decoration: none;
-    color: inherit;
+    will-change: filter;
+    transition: filter var(--ease-base);
+
+    /* will change */
+    color: var(--hi-strong) !important;
+    filter: brightness(0.7) saturate(3);
+}
+
+html[data-theme="dark"] sup a {
+    filter: brightness(1) saturate(1);
+    color: var(--hi-mid) !important;
 }
 
 sup a:hover {
-    text-decoration: underline;
+    filter: brightness(0.5) !important;
 }
 
 kbd {
@@ -467,9 +475,10 @@ dd {
 
 /* images */
 img {
-    max-width: 100%;
+    /* max-width: 100%; */
     height: auto;
     display: block;
+    margin: auto;
     border-radius: var(--r-md);
     background-color: var(--color-img-bg);
     border: 1px solid var(--color-img-border);

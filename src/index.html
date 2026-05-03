@@ -86,6 +86,7 @@
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/markdown.css">
 
+    <script src="/scripts/fuse.js"></script>
     <script src="/scripts/theme.js"></script>
 </head>
 
@@ -129,8 +130,8 @@
                                 stroke-linecap="round" />
                         </svg>
                     </span>
-                    <input id="nav-search" type="search" placeholder="Search..." autocomplete="off" spellcheck="false"
-                        aria-label="Search pages">
+                    <input id="nav-search" type="search" placeholder="Search by title..." autocomplete="off"
+                        spellcheck="false" aria-label="Search pages">
                     <button class="search-clear" id="search-clear" aria-label="Clear search" tabindex="-1">✕</button>
                 </div>
 
@@ -138,7 +139,7 @@
                     <span class="routes-label">Pages</span>
                     <span class="routes-count" id="routes-count">0</span>
                     <span class="spacer"></span>
-                    <button class="btn-collapse" id="btn-collapse" title="Collapse all sections">Collapse</button>
+                    <a class="btn-collapse" id="btn-collapse" title="Collapse all sections">Collapse</a>
                 </div>
             </div>
 
@@ -161,8 +162,8 @@
         <div class="footer-inner">
             <div class="footer-brand">
                 <span class="footer-logo">Quality of Feature</span>
-                <p class="footer-desc">A vanilla-friendly Minecraft Bedrock addon crafted with care by two Thai
-                    developers.</p>
+                <p class="footer-desc">An addon that introduces small,
+                    vanilla-friendly features improve gameplay without changing its core feel.</p>
             </div>
 
             <div class="footer-links">
@@ -234,8 +235,10 @@
     </div>
 
     <script>document.getElementById('footer-year').textContent = new Date().getFullYear()</script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
     <script src="/scripts/external.js"></script>
     <script src="/scripts/router.js"></script>
+    <script>router.init()</script>
 </body>
 
 </html>

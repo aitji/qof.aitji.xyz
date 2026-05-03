@@ -94,7 +94,7 @@ const minifyJSFile = async (src, out) => {
                 drop_console: true,
                 unsafe: true
             },
-            mangle: { toplevel: true },
+            mangle: { toplevel: false },
             format: { comments: false }
         })
 

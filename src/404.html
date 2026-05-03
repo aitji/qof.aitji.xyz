@@ -85,12 +85,218 @@
     <link rel="stylesheet" href="/styles/root.css">
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/markdown.css">
+    <link rel="stylesheet" href="/styles/misc/404.css">
 
     <script src="/scripts/theme.js"></script>
 </head>
 
 <body>
-    <h1>hi dev! go back <a href="/">here</a></h1>
+    <div id="progress-bar" aria-hidden="true" role="progressbar"></div>
+
+    <!-- header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburger" aria-label="Toggle sidebar" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+
+            <!-- logo -->
+            <a href="/" class="site-logo" data-navlink>
+                <span class="logo-text">Quality of Feature</span>
+            </a>
+
+            <div class="header-spacer"></div>
+
+            <!-- actions -->
+            <div class="header-actions">
+                <button class="btn-icon theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+                    <span class="theme-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+    <div class="site-layout">
+        <!-- sidebar -->
+        <aside class="site-sidebar" id="sidebar" aria-label="Documentation navigation">
+            <!-- search & controls -->
+            <div class="sidebar-top">
+                <div class="search-wrap">
+                    <span class="search-icon" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="6" cy="6" r="4.25" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M9.5 9.5L12.5 12.5" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                    <input id="nav-search" type="search" placeholder="Search by title..." autocomplete="off"
+                        spellcheck="false" aria-label="Search pages">
+                    <button class="search-clear" id="search-clear" aria-label="Clear search" tabindex="-1">✕</button>
+                </div>
+
+                <div class="sidebar-controls">
+                    <span class="routes-label">Pages</span>
+                    <span class="routes-count" id="routes-count">0</span>
+                    <span class="spacer"></span>
+                    <a class="btn-collapse" id="btn-collapse" title="Collapse all sections">Collapse</a>
+                </div>
+            </div>
+
+            <!-- search results -->
+            <div id="nav-results" role="listbox" aria-label="Search results"></div>
+
+            <!-- nav tree -->
+            <nav class="sidebar-nav" id="sidebar-nav" aria-label="Documentation navigation">
+                <div class="nav-loading">
+                    <span>Loading...</span>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="site-content" id="main-content" tabindex="-1">
+            <main class="page">
+                <div class="chunk-wrap">
+                    <div class="chunk" id="chunk"></div>
+                </div>
+
+                <div>
+                    <p class="error-codes">404</p>
+                    <p class="error-label">Chunk not found</p>
+                </div>
+
+                <blockquote class="bq">
+                    <p>Looks like this page fell into the void. It may have never existed, been moved, or is still
+                        being mined.</p>
+                    <cite>QoF Wiki</cite>
+                </blockquote>
+
+                <pre class="debug"><span class="muted">// wiki error report</span>
+<span class="key">error</span>   <span class="err">PAGE_NOT_FOUND</span>
+<span class="key">path</span>    <span class="val" id="dbg-path">/w/unknown</span>
+<span class="key">status</span>  <span class="err">404</span>
+<span class="key">hint</span>    <span class="val">"check the url or go back home"</span></pre>
+
+                <div class="links">
+                    <a class="btn btn-primary" href="/">&#8592; Back to home</a>
+                    <a class="btn" href="/w/Installation">Installation</a>
+                    <a class="btn" href="/w/Changelog">Changelog</a>
+                    <a class="btn" href="/w/Troubleshooting">Troubleshooting</a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">Quality of Feature</span>
+                <p class="footer-desc">An addon that introduces small,
+                    vanilla-friendly features improve gameplay without changing its core feel.</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-col">
+                    <span class="footer-col-label">Project</span>
+                    <a href="https://github.com/aitji/QoF" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://github.com/aitji/QoF/releases" class="footer-link" target="_blank"
+                        rel="noopener">Releases</a>
+                    <a href="https://github.com/aitji/QoF/issues" class="footer-link" target="_blank"
+                        rel="noopener">Issues</a>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-col-label">Developers</span>
+                    <a href="https://github.com/aitji" class="footer-link" target="_blank" rel="noopener">@aitji</a>
+                    <a href="https://github.com/pickerth-12" class="footer-link" target="_blank"
+                        rel="noopener">@pickerth-12</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-copy">QoF &trade; Copyright (c) <span id="footer-year"></span> - aitji &amp;
+                pickerth-12</span>
+            <span class="footer-sep" aria-hidden="true">&middot;</span>
+            <span class="footer-note">Minecraft is a trademark of Mojang Studios. This addon is not affiliated with or
+                endorsed by Mojang.</span>
+        </div>
+    </footer>
+
+    <div id="ext-redirect-modal" role="dialog" aria-modal="true" aria-labelledby="ext-modal-title"
+        aria-describedby="modal-desc" inert="">
+        <div class="ext-modal-backdrop"></div>
+        <div class="ext-modal-box">
+            <div class="ext-modal-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 3H21M21 3V11M21 3L11 13" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M10 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21H17C18.1046 21 19 20.1046 19 19V14"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="ext-modal-body">
+                <p class="ext-modal-label" id="ext-modal-title">Leaving Quality of Feature</p>
+                <p class="ext-modal-desc" id="ext-modal-desc">You are being redirected to an external site:</p>
+                <div class="ext-modal-url-wrap">
+                    <span class="ext-modal-url" id="ext-modal-url"></span>
+                </div>
+            </div>
+            <button class="ext-modal-close" id="ext-modal-close" aria-label="Cancel redirect">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+            </button>
+            <div class="ext-modal-actions">
+                <button class="ext-modal-btn ext-modal-btn--cancel" id="ext-modal-cancel">Stay here</button>
+                <button class="ext-modal-btn ext-modal-btn--go" id="ext-modal-go">
+                    <span id="ext-modal-go-text">Open link</span>
+                    <svg class="ext-modal-btn-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="ext-modal-progress-wrap" aria-hidden="true">
+                <div class="ext-modal-progress" id="ext-modal-progress"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/router.js"></script>
+    <script>
+        document.addEventListener('click', e => e && e.target.closest('.nav-link') && window.location.reload())
+        router.initSidebar()
+
+        const map = [
+            'air', 'grass', 'grass', 'air', 'air', 'air', 'air', 'air',
+            'grass', 'dirt', 'dirt', 'grass', 'air', 'air', 'air', 'air',
+            'dirt', 'dirt', 'dirt', 'dirt', 'grass', 'air', 'air', 'air',
+            'dirt', 'stone', 'stone', 'dirt', 'dirt', 'air', 'air', 'air',
+            'stone', 'stone', 'stone', 'stone', 'dirt', 'grass', 'air', 'air',
+            'stone', 'stone', 'stone', 'stone', 'stone', 'dirt', 'gold', 'air',
+            'stone', 'stone', 'stone', 'stone', 'stone', 'dirt', 'grass', 'grass',
+            'stone', 'stone', 'stone', 'stone', 'stone', 'stone', 'dirt', 'dirt',
+        ]
+
+        const chunk = document.getElementById('chunk')
+        map.forEach(type => {
+            const cell = document.createElement('div')
+            cell.className = `cell c-${type}`
+            chunk.appendChild(cell)
+        })
+
+        const dbgPath = document.getElementById('dbg-path')
+        try { dbgPath.textContent = window.location.pathname || '/w/unknown' }
+        catch (e) { }
+
+        const gold = chunk.querySelectorAll('.c-gold')
+        let on = true
+        setInterval(() => {
+            gold.forEach(el => el.style.background = on ? 'var(--hi-mid)' : 'var(--hi-dim)')
+            on = !on
+        }, 500)
+    </script>
 </body>
 
 </html>
