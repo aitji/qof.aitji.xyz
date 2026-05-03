@@ -183,12 +183,12 @@
         },
         {
             "title": "Developer",
-            "slug": "/dev",
+            "slug": "/w/Dev",
             "path": "/docs/dev/_main.html",
             "pages": [
                 {
                     "title": "Table",
-                    "slug": "/dev/table",
+                    "slug": "/w/Dev/Table",
                     "path": "/docs/dev/1.table.html"
                 }
             ]
