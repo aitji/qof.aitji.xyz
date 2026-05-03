@@ -20,8 +20,8 @@
     z-index: 200;
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border-subtle);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: saturate(180%);
+    -webkit-backdrop-filter: saturate(180%);
 }
 
 .header-inner {
@@ -553,7 +553,6 @@ html[data-theme="dark"] .nav-row:has(.nav-link.active) {
     z-index: 90;
     opacity: 0;
     transition: opacity var(--ease-base);
-    backdrop-filter: blur(2px);
 }
 
 .sidebar-overlay.visible {
