@@ -44,6 +44,8 @@ article {
     margin-inline: auto;
     padding-inline: var(--sp-5);
     padding-block: var(--sp-8);
+    width: 100%;
+    overflow-x: clip;
 }
 
 /* head */
@@ -493,7 +495,6 @@ table {
 div:has(> table) {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border-radius: var(--r-md);
     box-shadow: var(--shadow-sm);
     margin-block: var(--sp-6);
 
@@ -512,7 +513,6 @@ div:has(> table) {
 div:has(> table)>table {
     margin-block: 0;
     box-shadow: none;
-    border-radius: 0;
 }
 
 .table-wrap::-webkit-scrollbar,
@@ -523,7 +523,6 @@ div:has(> table)::-webkit-scrollbar {
 .table-wrap::-webkit-scrollbar-thumb,
 div:has(> table)::-webkit-scrollbar-thumb {
     background: var(--color-border);
-    border-radius: var(--r-pill);
 }
 
 /* thead / tbody / tfoot */
@@ -588,7 +587,6 @@ td>table {
     margin: 0;
     border: none;
     box-shadow: none;
-    border-radius: 0;
     background: transparent;
     font-size: inherit;
     width: auto;

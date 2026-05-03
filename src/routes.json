@@ -180,6 +180,18 @@
             "title": "Troubleshooting",
             "slug": "/w/Troubleshooting",
             "path": "/docs/troubleshooting.html"
+        },
+        {
+            "title": "Developer",
+            "slug": "/dev",
+            "path": "/docs/dev/_main.html",
+            "pages": [
+                {
+                    "title": "Table",
+                    "slug": "/dev/table",
+                    "path": "/docs/dev/1.table.html"
+                }
+            ]
         }
     ]
 }
