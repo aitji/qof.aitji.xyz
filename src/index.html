@@ -199,7 +199,49 @@
         </div>
     </footer>
 
+    <div id="ext-redirect-modal" role="dialog" aria-modal="true" aria-labelledby="ext-modal-title"
+        aria-describedby="modal-desc" inert="">
+        <div class="ext-modal-backdrop"></div>
+        <div class="ext-modal-box">
+            <div class="ext-modal-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 3H21M21 3V11M21 3L11 13" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M10 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21H17C18.1046 21 19 20.1046 19 19V14"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="ext-modal-body">
+                <p class="ext-modal-label" id="ext-modal-title">Leaving Quality of Feature</p>
+                <p class="ext-modal-desc" id="ext-modal-desc">You are being redirected to an external site:</p>
+                <div class="ext-modal-url-wrap">
+                    <span class="ext-modal-url" id="ext-modal-url"></span>
+                </div>
+            </div>
+            <button class="ext-modal-close" id="ext-modal-close" aria-label="Cancel redirect">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+            </button>
+            <div class="ext-modal-actions">
+                <button class="ext-modal-btn ext-modal-btn--cancel" id="ext-modal-cancel">Stay here</button>
+                <button class="ext-modal-btn ext-modal-btn--go" id="ext-modal-go">
+                    <span id="ext-modal-go-text">Open link</span>
+                    <svg class="ext-modal-btn-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="ext-modal-progress-wrap" aria-hidden="true">
+                <div class="ext-modal-progress" id="ext-modal-progress"></div>
+            </div>
+        </div>
+    </div>
+
     <script>document.getElementById('footer-year').textContent = new Date().getFullYear()</script>
+    <script src="/scripts/external.js"></script>
 </body>
 
 </html>
