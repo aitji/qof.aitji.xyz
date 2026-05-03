@@ -557,9 +557,6 @@ div:has(> table) {
     background-size: 40px 100%;
     background-repeat: no-repeat;
     background-attachment: local, local;
-
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-border) transparent;
 }
 
 .table-wrap>table,
@@ -571,11 +568,6 @@ div:has(> table)>table {
 .table-wrap::-webkit-scrollbar,
 div:has(> table)::-webkit-scrollbar {
     height: 5px;
-}
-
-.table-wrap::-webkit-scrollbar-thumb,
-div:has(> table)::-webkit-scrollbar-thumb {
-    background: var(--color-border);
 }
 
 /* thead / tbody / tfoot */
