@@ -704,8 +704,8 @@ html[data-theme="dark"] .ext-modal-backdrop {
 
 .ext-modal-box {
     position: relative;
-    background: var(--color-surface-raised, #f7f8fa);
-    border: 1px solid var(--color-border, #d3d8e0);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 1.5rem;
     max-width: 400px;
@@ -729,8 +729,8 @@ html[data-theme="dark"] .ext-modal-backdrop {
 }
 
 html[data-theme="dark"] .ext-modal-box {
-    background: var(--color-surface-raised, #1c2128);
-    border-color: var(--color-border, #30363d);
+    background: var(--color-surface-raised,);
+    border-color: var(--color-border);
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -744,7 +744,7 @@ html[data-theme="dark"] .ext-modal-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--hi-mid, #f1e05a);
+    color: var(--hi-mid);
     flex-shrink: 0;
     margin-top: 2px;
 }
@@ -765,7 +765,7 @@ html[data-theme="dark"] .ext-modal-icon {
     font-family: var(--font-ui, system-ui);
     font-size: 0.9375rem;
     font-weight: 600;
-    color: var(--color-text, #1a1d24);
+    color: var(--color-text);
     margin: 0;
     line-height: 1.3;
     letter-spacing: -0.01em;
@@ -774,29 +774,29 @@ html[data-theme="dark"] .ext-modal-icon {
 .ext-modal-desc {
     font-family: var(--font-ui, system-ui);
     font-size: 0.8125rem;
-    color: var(--color-text-3, #4b535c);
+    color: var(--color-text-3);
     margin: 0;
     line-height: 1.4;
 }
 
 .ext-modal-url-wrap {
     margin-top: 0.375rem;
-    background: var(--color-bg-3, #f0f2f5);
-    border: 1px solid var(--color-border-subtle, #e8eaed);
+    background: var(--color-bg-3);
+    border: 1px solid var(--color-border-subtle);
     border-radius: 6px;
     padding: 0.375rem 0.625rem;
     overflow: hidden;
 }
 
 html[data-theme="dark"] .ext-modal-url-wrap {
-    background: var(--color-bg, #161b22);
-    border-color: var(--color-border, #30363d);
+    background: var(--color-bg);
+    border-color: var(--color-border);
 }
 
 .ext-modal-url {
     font-family: var(--font-mono, monospace);
     font-size: 0.75rem;
-    color: var(--color-text-link, #2563eb);
+    color: var(--color-text-link);
     word-break: break-all;
     display: block;
     line-height: 1.5;
@@ -807,9 +807,9 @@ html[data-theme="dark"] .ext-modal-url-wrap {
     width: 26px;
     height: 26px;
     border-radius: 6px;
-    border: 1px solid var(--color-border-subtle, #e8eaed);
+    border: 1px solid var(--color-border-subtle);
     background: none;
-    color: var(--color-text-3, #4b535c);
+    color: var(--color-text-3);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -819,9 +819,9 @@ html[data-theme="dark"] .ext-modal-url-wrap {
 }
 
 .ext-modal-close:hover {
-    background: var(--color-bg-3, #f0f2f5);
-    color: var(--color-text, #1a1d24);
-    border-color: var(--color-border, #d3d8e0);
+    background: var(--color-bg-3);
+    color: var(--color-text);
+    border-color: var(--color-border);
 }
 
 .ext-modal-actions {
@@ -846,19 +846,19 @@ html[data-theme="dark"] .ext-modal-url-wrap {
 
 .ext-modal-btn--cancel {
     background: none;
-    border-color: var(--color-border, #d3d8e0);
-    color: var(--color-text-2, #2c3039);
+    border-color: var(--color-border);
+    color: var(--color-text-2);
 }
 
 .ext-modal-btn--cancel:hover {
-    background: var(--color-bg-3, #f0f2f5);
-    border-color: var(--color-border-strong, #b0b8c4);
-    color: var(--color-text, #1a1d24);
+    background: var(--color-bg-3);
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
 }
 
 .ext-modal-btn--go {
-    background: var(--hi-mid, #f1e05a);
-    border-color: var(--hi-strong, #f1d652);
+    background: var(--hi-mid);
+    border-color: var(--hi-strong);
     color: #1a1200;
     display: flex;
     align-items: center;
@@ -866,7 +866,7 @@ html[data-theme="dark"] .ext-modal-url-wrap {
 }
 
 .ext-modal-btn--go:hover {
-    background: var(--hi-strong, #f1d652);
+    background: var(--hi-strong);
     box-shadow: 0 0 0 3px rgba(241, 224, 90, 0.3);
 }
 
@@ -883,7 +883,7 @@ html[data-theme="dark"] .ext-modal-url-wrap {
 .ext-modal-progress-wrap {
     grid-area: progress;
     height: 2px;
-    background: var(--color-border-subtle, #e8eaed);
+    background: var(--color-border-subtle);
     border-radius: 9999px;
     overflow: hidden;
 }
@@ -891,7 +891,7 @@ html[data-theme="dark"] .ext-modal-url-wrap {
 .ext-modal-progress {
     height: 100%;
     width: 100%;
-    background: var(--hi-mid, #f1e05a);
+    background: var(--hi-mid);
     border-radius: 9999px;
     transform-origin: left;
     transform: scaleX(1);
