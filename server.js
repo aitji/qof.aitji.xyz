@@ -4,8 +4,9 @@ import https from 'https'
 import path from 'path'
 import { spawn } from 'child_process'
 
+const PORT = '3000'
 const USE_HTTPS = process.argv.includes('--https')
-const PORT = parseInt(process.argv.find(a => a.startsWith('--port='))?.split('=')[1] ?? (USE_HTTPS ? '3443' : '3000'))
+const PORT = parseInt(process.argv.find(a => a.startsWith('--port='))?.split('=')[1] ?? PORT)
 const OUT = 'public'
 
 let spaRoutes = []
