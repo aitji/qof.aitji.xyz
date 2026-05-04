@@ -1,0 +1,714 @@
+<main>
+    <h1 id="qof-v1-1-0-s-subtle-shift-update">QoF v1.1.0&#39;s &quot;Subtle Shift&quot; Update</h1>
+    <blockquote>
+        A Minecraft Bedrock addon that adds small vanilla-friendly features.
+        <cite>note</cite>
+    </blockquote>
+
+    <h2 id="pack-info">Pack Info</h2>
+    <p>
+        Full changelog: <a href="https://github.com/aitji/QoL-BP/commits/v1.1.0">v1.1.0</a> Releases:
+        <a href="https://github.com/aitji/QoF/releases/tag/v1.1.0">v1.1.0</a> LICENSE:
+        <a href="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/LICENSE">MIT</a>
+        <br>Release Date: <a href="https://time.is/Unix_time_converter/1773676940">Mar/16/2026 (16:02:20)</a>
+    </p>
+    <p>
+        Base Game Version: <a
+            href="https://feedback.minecraft.net/hc/en-us/articles/43861703542925-Minecraft-Bedrock-Edition-26-3-Changelog">
+            26.3
+        </a><br>
+        Dependency: <a href="https://www.npmjs.com/package/@minecraft/server/v/2.5.0">2.5.0</a>
+    </p>
+
+    <h2 id="changelogs">Changelogs</h2>
+    <blockquote>
+        This is a first release of <strong>QoF</strong>, hope you enjoy!
+        <cite>Developer Note (@aitji)</cite>
+    </blockquote>
+    <h3 id="dynamic-light">Dynamic Light</h3>
+    <ol>
+        <li>Move from pure Dynamic Property and <code>Set()</code> to get more performance, following
+            <code>light, frame, chunk_unload</code>
+        </li>
+        <li>light level with offhand will be calculated with hypot</li>
+        <li>Spread light correctly checks blocks, and won&#39;t go through blocks</li>
+        <li>Add a Glow Entity that emits light</li>
+        <li>tracking <code>Item Frame</code> placement &amp; destruction, and will display light level correctly based
+            on item displayed</li>
+    </ol>
+
+    <p>
+        Dynamic Light Table:
+        <a href="https://github.com/aitji/QoF/blob/8ecf100412e4478ca34d6fe61cf589f4a6cef416/scripts/_config.js#L12-L66">
+            v.1.1.0
+        </a>
+    </p>
+
+    <details>
+        <summary>Dynamic Light Table</summary>
+
+        <h4>Item Emit Light:</h4>
+        <div class="table-wrap">
+            <table>
+                <tbody>
+                    <tr>
+                        <th><b>Light</b></th>
+                        <th><b>Block</b></th>
+                        <th><b>Condition</b></th>
+                    </tr>
+
+                    <!-- Light 15 -->
+                    <tr>
+                        <td rowspan="20">15</td>
+                        <td>beacon</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>campfire</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>conduit</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>glowstone</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ochre_froglight</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>pearlescent_froglight</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>verdant_froglight</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>lit_pumpkin</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>lava_bucket</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>sea_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>shroomlight</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>waxed_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>exposed_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>oxidized_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>waxed_oxidized_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>waxed_exposed_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>weathered_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>waxed_weathered_copper_lantern</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 14 -->
+                    <tr>
+                        <td rowspan="4">14</td>
+                        <td>end_rod</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>glow_berries</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>torch</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>copper_torch</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 10 -->
+                    <tr>
+                        <td rowspan="4">10</td>
+                        <td>crying_obsidian</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>soul_campfire</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>soul_lantern</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>soul_torch</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 7 -->
+                    <tr>
+                        <td rowspan="4">7</td>
+                        <td>enchanting_table</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ender_chest</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>glow_lichen</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>redstone_torch</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 6 -->
+                    <tr>
+                        <td rowspan="3">6</td>
+                        <td>sculk_catalyst</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>sea_pickle</td>
+                        <td>Only in water</td>
+                    </tr>
+                    <tr>
+                        <td>vault</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 5 -->
+                    <tr>
+                        <td rowspan="1">5</td>
+                        <td>amethyst_cluster</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 4 -->
+                    <tr>
+                        <td rowspan="2">4</td>
+                        <td>large_amethyst_bud</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>trial_spawner</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 3 -->
+                    <tr>
+                        <td rowspan="1">3</td>
+                        <td>magma</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 2 -->
+                    <tr>
+                        <td rowspan="2">2</td>
+                        <td>firefly_bush</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>medium_amethyst_bud</td>
+                        <td>-</td>
+                    </tr>
+
+                    <!-- Light 1 -->
+                    <tr>
+                        <td rowspan="7">1</td>
+                        <td>brewing_stand</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>brown_mushroom</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>calibrated_sculk_sensor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>dragon_egg</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>end_portal_frame</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>sculk_sensor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>small_amethyst_bud</td>
+                        <td>-</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Entity Emit Light:</h4>
+        <div class="table-wrap">
+            <table>
+                <tbody>
+                    <tr>
+                        <th><b>Light</b></th>
+                        <th><b>Entity</b></th>
+                        <th><b>Condition</b></th>
+                    </tr>
+                    <tr>
+                        <td rowspan="1">12</td>
+                        <td>blaze</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">10</td>
+                        <td>allay</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>glow_squid</td>
+                        <td>Only in water</td>
+                    </tr>
+                    <tr>
+                        <td>vex</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1">6</td>
+                        <td>warden</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </details>
+
+
+    <h3 id="anvil-repairing">Anvil Repairing</h3>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/showcase/repair-anvil.gif"
+        class="img img--ratio-16-9 img--w600">
+    <ol>
+        <li>Anvil can be repaired by consume <em>1 Iron Ingot</em></li>
+        <li>Allow player to hold click to repair the anvil, anvil UI won&#39;t pop up until stop repairing</li>
+        <li>Ensure edge cases where iron ingot is not consumed, anvil might roll-back to old state</li>
+    </ol>
+
+    <h3 id="wet-concrete-powder">Wet Concrete Powder</h3>
+    <ol>
+        <li><code>wetDelay</code> has been implemented with formula</li>
+        <li>track concrete powder when entity spawns/removes</li>
+        <li>keep tracking item entity velocity</li>
+        <li>batching the loop with BATCH_SIZE limit per tick</li>
+    </ol>
+
+    <h3 id="composter-">Composter+</h3>
+    <ol>
+        <li>composter custom item logic following vanilla</li>
+        <li>edge case handling for inventory desync</li>
+        <li>bowl return on <code>soup/stew</code> item</li>
+    </ol>
+
+    <details>
+        <summary>Compostable Item</summary>
+        <div class="table-wrap">
+            <table>
+                <tbody>
+                    <tr>
+                        <th><b>Chance</b></th>
+                        <th><b>Item</b></th>
+                    </tr>
+
+                    <!-- 100% -->
+                    <tr>
+                        <td rowspan="3">100%</td>
+                        <td>enchanted_golden_apple</td>
+                    </tr>
+                    <tr>
+                        <td>rabbit_stew</td>
+                    </tr>
+                    <tr>
+                        <td>nether_star</td>
+                    </tr>
+
+                    <!-- 85% -->
+                    <tr>
+                        <td rowspan="20">85%</td>
+                        <td>blaze_rod</td>
+                    </tr>
+                    <tr>
+                        <td>fermented_spider_eye</td>
+                    </tr>
+                    <tr>
+                        <td>dried_ghast</td>
+                    </tr>
+                    <tr>
+                        <td>black_wool</td>
+                    </tr>
+                    <tr>
+                        <td>blue_wool</td>
+                    </tr>
+                    <tr>
+                        <td>brown_wool</td>
+                    </tr>
+                    <tr>
+                        <td>cyan_wool</td>
+                    </tr>
+                    <tr>
+                        <td>gray_wool</td>
+                    </tr>
+                    <tr>
+                        <td>green_wool</td>
+                    </tr>
+                    <tr>
+                        <td>light_blue_wool</td>
+                    </tr>
+                    <tr>
+                        <td>light_gray_wool</td>
+                    </tr>
+                    <tr>
+                        <td>lime_wool</td>
+                    </tr>
+                    <tr>
+                        <td>magenta_wool</td>
+                    </tr>
+                    <tr>
+                        <td>orange_wool</td>
+                    </tr>
+                    <tr>
+                        <td>pink_wool</td>
+                    </tr>
+                    <tr>
+                        <td>red_wool</td>
+                    </tr>
+                    <tr>
+                        <td>purple_wool</td>
+                    </tr>
+                    <tr>
+                        <td>white_wool</td>
+                    </tr>
+                    <tr>
+                        <td>yellow_wool</td>
+                    </tr>
+                    <tr>
+                        <td>popped_chorus_fruit</td>
+                    </tr>
+
+                    <!-- 65% -->
+                    <tr>
+                        <td rowspan="24">65%</td>
+                        <td>poisonous_potato</td>
+                    </tr>
+                    <tr>
+                        <td>chorus_fruit</td>
+                    </tr>
+                    <tr>
+                        <td>resin_clump</td>
+                    </tr>
+                    <tr>
+                        <td>lit_pumpkin</td>
+                    </tr>
+                    <tr>
+                        <td>rotten_flesh</td>
+                    </tr>
+                    <tr>
+                        <td>web</td>
+                    </tr>
+                    <tr>
+                        <td>gunpowder</td>
+                    </tr>
+                    <tr>
+                        <td>magma_cream</td>
+                    </tr>
+                    <tr>
+                        <td>slime_ball</td>
+                    </tr>
+                    <tr>
+                        <td>leather</td>
+                    </tr>
+                    <tr>
+                        <td>phantom_membrane</td>
+                    </tr>
+                    <tr>
+                        <td>cooked_chicken</td>
+                    </tr>
+                    <tr>
+                        <td>cooked_pork</td>
+                    </tr>
+                    <tr>
+                        <td>cooked_rabbit</td>
+                    </tr>
+                    <tr>
+                        <td>cooked_cod</td>
+                    </tr>
+                    <tr>
+                        <td>cooked_salmon</td>
+                    </tr>
+                    <tr>
+                        <td>glistering_melon_slice</td>
+                    </tr>
+                    <tr>
+                        <td>golden_apple</td>
+                    </tr>
+                    <tr>
+                        <td>golden_carrot</td>
+                    </tr>
+                    <tr>
+                        <td>bamboo</td>
+                    </tr>
+                    <tr>
+                        <td>dead_bush</td>
+                    </tr>
+                    <tr>
+                        <td>honeycomb</td>
+                    </tr>
+                    <tr>
+                        <td>suspicious_stew</td>
+                    </tr>
+                    <tr>
+                        <td>beetroot_soup</td>
+                    </tr>
+
+                    <!-- 50% -->
+                    <tr>
+                        <td rowspan="18">50%</td>
+                        <td>bamboo</td>
+                    </tr>
+                    <tr>
+                        <td>dead_bush</td>
+                    </tr>
+                    <tr>
+                        <td>honeycomb</td>
+                    </tr>
+                    <tr>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>blaze_powder</td>
+                    </tr>
+                    <tr>
+                        <td>ghast_tear</td>
+                    </tr>
+                    <tr>
+                        <td>chicken</td>
+                    </tr>
+                    <tr>
+                        <td>porkchop</td>
+                    </tr>
+                    <tr>
+                        <td>beef</td>
+                    </tr>
+                    <tr>
+                        <td>mutton</td>
+                    </tr>
+                    <tr>
+                        <td>rabbit</td>
+                    </tr>
+                    <tr>
+                        <td>feather</td>
+                    </tr>
+                    <tr>
+                        <td>ink_sac</td>
+                    </tr>
+                    <tr>
+                        <td>glow_ink_sac</td>
+                    </tr>
+                    <tr>
+                        <td>rabbit_hide</td>
+                    </tr>
+                    <tr>
+                        <td>rabbit_foot</td>
+                    </tr>
+                    <tr>
+                        <td>frog_spawn</td>
+                    </tr>
+                    <tr>
+                        <td>cod</td>
+                    </tr>
+
+                    <!-- 30% -->
+                    <tr>
+                        <td rowspan="3">30%</td>
+                        <td>podzol</td>
+                    </tr>
+                    <tr>
+                        <td>mycelium</td>
+                    </tr>
+                    <tr>
+                        <td>rooted_dirt</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </details>
+
+    <h3 id="mob-loot-">Mob Loot+</h3>
+    <p>Add mob loot to previously unlootable mobs</p>
+    <ol>
+        <li>Goat Drop <code>Raw Mutton</code><sup><a href="/w/Mob_Loot/Goat">[1]</a></sup></li>
+        <li>Silverfish Drop <code>String</code><sup><a href="/w/Mob_Loot/Silverfish">[2]</a></sup></li>
+    </ol>
+
+    <h3 id="recipe-">Recipe+</h3>
+    <p>A more accessible way to obtain items</p>
+    <h4 id="1-bamboo-block-to-charcoal-furnace-">1. Bamboo Block to Charcoal (<code>Furnace</code>)</h4>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/charcoal-bamboo.png"
+        alt="Smelting bamboo block to charcoal in furnace" class="img img--ratio-16-9 img--w600">
+
+    <muted><strong>alt-text</strong>: Smelting bamboo block to charcoal in <em>furnace</em></muted>
+    <h4 id="2-sand-to-glass-blast-furnace-">2. Sand to Glass (<code>Blast Furnace</code>)</h4>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/glass-sand.png"
+        alt="Smelting sand to glass in blast furnace" class="img img--ratio-16-9 img--w600">
+
+    <muted><strong>alt-text</strong>: Smelting sand to glass in <em>blast furnace</em></muted>
+    <h4 id="3-gilded-blackstone-to-gold-ingot-blast-furnace-furnace-">3. Gilded Blackstone to Gold Ingot
+        (<code>Blast Furnace, Furnace</code>)</h4>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/gold_ingot-gilded.png"
+        alt="Smelting sand to glass in blast furnace, also support furnace" class="img img--ratio-16-9 img--w600">
+
+    <muted><strong>alt-text</strong>: Smelting sand to glass in <em>blast furnace</em>, also support <em>furnace</em></muted>
+    <h4 id="4-rotten-flesh-to-rabbit-hide-furnace-smoker-campfire-soul-campfire-">4. Rotten Flesh to Rabbit Hide
+        (<code>Furnace, Smoker, Campfire, Soul Campfire</code>)</h4>
+    <blockquote>
+        This recipe has been removed in version
+        <a
+            href="https://github.com/aitji/QoF/commit/96b9a356bb94e927d817f8d013a0f2529a96924d#diff-abbae89136b0409af0a5d70eaf5ddb4f7da01775d048c60f122e1eca1cb4f42e/recipes/furnace/hide-rotten_flesh.json">
+            (v1.2.2)
+        </a>
+        <cite>Developer Note: Rebalance (@pickerth-12)</cite>
+    </blockquote>
+    <h4 id="5-stone-to-smooth-stone-blast-furnace-">5. Stone to Smooth Stone (<code>Blast Furnace</code>)</h4>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/smooth_stone-stone.png"
+        alt="Smelting stone to smooth stone in blast furnace" class="img img--ratio-16-9 img--w600">
+
+    <muted><strong>alt-text</strong>: Smelting stone to smooth stone in blast furnace</muted>
+    <h5 id="6-cobblestone-to-stone-blast-furnace-">6. Cobblestone to Stone (<code>Blast Furnace</code>)</h5>
+    <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/smooth_stone-stone.png"
+        alt="Smelting stone to smooth stone in blast furnace" class="img img--ratio-16-9 img--w600">
+
+    <muted><strong>alt-text</strong>: Smelting stone to smooth stone in blast furnace</muted>
+    <h4 id="7-charcoal-to-coal-block-crafting-table-">7. Charcoal to Coal Block (<code>Crafting Table</code>)</h4>
+    <blockquote>
+        This recipe has been removed in version <a
+            href="https://github.com/aitji/QoF/commit/96b9a356bb94e927d817f8d013a0f2529a96924d#diff-efb7d2a3c8fefe761cd5e08fb42e344c5c4c88fcdbe7a752724f9b0326b3e0ed/recipes/shapeless/coal_block-charcoal.json">(v1.2.2)</a>\
+        <cite>Developer Note: Rebalance (@pickerth-12)</cite>
+    </blockquote>
+    <h4 id="8-stone-in-stonecutter">8. <strong>Stone</strong> in Stonecutter</h4>
+    <ul>
+        <li>Andesite &lt;-&gt; Stone</li>
+        <li>Diorite &lt;-&gt; Stone</li>
+        <li>Granite &lt;-&gt; Stone</li>
+        <blockquote>
+            This recipe will be removed in version <a
+                href="https://github.com/aitji/QoF/commits/pre-releases">(v1.3.0)</a>
+            <cite>Developer Note: Rebalance (@pickerth-12)</cite>
+        </blockquote>
+    </ul>
+    <h4 id="9-wood-in-stonecutter">9. <strong>Wood</strong> in Stonecutter</h4>
+    <blockquote>
+        Each wood type folder will result in 61 Files<br>
+        Resulting 671 Files in 11 Folders</p>
+        <cite>Note</cite>
+    </blockquote>
+    <div align="center">
+        <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/stonecutter-oak-log.png"
+            alt="Stonecutter Oak Log" class="img img--ratio-16-9 img--w600">
+    </div>
+
+    <details>
+        <summary><strong>Wood Cutter Data</strong></summary>
+
+        <h4>Available wood types</h4>
+        <ol>
+            <li>Acacia</li>
+            <li>Birch</li>
+            <li>Cherry</li>
+            <li>Crimson</li>
+            <li>Dark Oak</li>
+            <li>Jungle</li>
+            <li>Mangrove</li>
+            <li>Oak</li>
+            <li>Pale Oak</li>
+            <li>Spruce</li>
+            <li>Warped</li>
+        </ol>
+
+        <h4>Material Types</h4>
+
+        <ol>
+            <li>Log <code>x4</code></li>
+            <li>Stripped Wood <code>x4</code></li>
+            <li>Wood <code>x4</code></li>
+            <li>Stripped Log <code>x4</code></li>
+            <li>Planks <code>x1</code></li>
+
+            <p>And edge case for <code>Nether wood (e.g. warped &amp; crimson)</code></p>
+            <li>Stem <code>x4</code></li>
+            <li>Hyphae <code>x4</code></li>
+        </ol>
+
+        <h4>Result Items</h4>
+        <ol>
+            <li>Slab <code>x2</code></li>
+            <li>Stick <code>x2</code></li>
+            <li>Sign <code>x1</code></li>
+            <li>Door <code>x1</code></li>
+            <li>Pressure Plate <code>x1</code></li>
+            <li>Trapdoor <code>x1</code></li>
+            <li>Fence Gate <code>x1</code></li>
+            <li>Gate <code>x1</code></li>
+
+            <p>Wood can be transferred back &amp; forth</p>
+            <li>Stripped Wood</li>
+            <li>Stripped Log</li>
+            <li>Wood</li>
+            <li>Log</li>
+
+            <p>And edge case for <code>Nether wood (e.g. warped &amp; crimson)</code></p>
+            <li>Stripped Stem</li>
+            <li>Stripped Hyphae</li>
+            <li>Stem</li>
+            <li>Hyphae</li>
+        </ol>
+
+        <img src="https://raw.githubusercontent.com/aitji/QoF/refs/heads/behavior_packs/.github/img/v1.1.0/stonecutter-warped-planks.png"
+            alt="Stonecutter Warped Planks" class="img img--ratio-16-9 img--w600">
+    </details>
+</main>

@@ -6,6 +6,8 @@ const KEYWORDS = Object.freeze(
 
         ["beta apis", "Experimental Application Programming Interfaces"],
         ["beta api", "Experimental Application Programming Interface"],
+
+        ["json", "JavaScript Object Notation"],
     ])
 )
 

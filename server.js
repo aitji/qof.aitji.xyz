@@ -4,9 +4,8 @@ import https from 'https'
 import path from 'path'
 import { spawn } from 'child_process'
 
-const PORT = '3000'
 const USE_HTTPS = process.argv.includes('--https')
-const PORT = parseInt(process.argv.find(a => a.startsWith('--port='))?.split('=')[1] ?? PORT)
+const PORT = parseInt(process.argv.find(a => a.startsWith('--port='))?.split('=')[1] ?? '3000')
 const OUT = 'public'
 
 let spaRoutes = []
@@ -101,7 +100,7 @@ fs.watch(OUT, { recursive: true }, () => {
 
 const serveHTML = (res, filePath, statusCode = 200) => {
     let html = fs.readFileSync(filePath, 'utf8')
-    html = html.includes('</body>')
+    if (!filePath.includes('docs')) html = html.includes('</body>')
         ? html.replace('</body>', `${LIVERELOAD_SCRIPT}</body>`)
         : html + LIVERELOAD_SCRIPT
     res.writeHead(statusCode, { 'Content-Type': 'text/html; charset=utf-8' })

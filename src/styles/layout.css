@@ -412,15 +412,14 @@ html[data-theme="dark"] .nav-row:has(.nav-link.active) {
     line-height: 1.7;
     margin-right: var(--sp-1);
     cursor: pointer;
-    transition: opacity var(--ease-fast);
+    opacity: 0.3;
+    transition: opacity var(--ease-fast), border-color var(--ease-fast);
 }
 
-.nav-row:hover .nav-badge {
-    opacity: 1;
-}
-
+.nav-row:hover .nav-badge,
 .nav-item.open>.nav-row .nav-badge {
-    opacity: 0.55;
+    opacity: 1;
+    border-color: var(--color-border);
 }
 
 /* chevron */

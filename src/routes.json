@@ -21,7 +21,7 @@
         {
             "title": "Modules",
             "slug": "/w/Modules",
-            "path": "/docs/modules/modules.html",
+            "path": "/docs/modules/_main.html",
             "pages": [
                 {
                     "title": "Dynamic Light",
@@ -72,11 +72,23 @@
                     "title": "Harvest",
                     "slug": "/w/Harvest",
                     "path": "/docs/harvest.html"
+                }
+            ]
+        },
+        {
+            "title": "JSON",
+            "slug": "/w/JSON",
+            "path": "/docs/json/_main.html",
+            "pages": [
+                {
+                    "title": "Bat Trader",
+                    "slug": "/w/Bat_Trader",
+                    "path": "/docs/json/bat-trader.html"
                 },
                 {
                     "title": "Mob Loot+",
                     "slug": "/w/Mob_Loot",
-                    "path": "/docs/mob-loot.html",
+                    "path": "/docs/json/mob-loot.html",
                     "pages": [
                         {
                             "title": "Goat",
@@ -103,7 +115,7 @@
                 {
                     "title": "Recipe+",
                     "slug": "/w/Recipe",
-                    "path": "/docs/recipe.html",
+                    "path": "/docs/json/recipe.html",
                     "pages": [
                         {
                             "title": "Smelting Recipes",
@@ -132,32 +144,32 @@
         {
             "title": "Changelog",
             "slug": "/w/Changelog",
-            "path": "/docs/changelog.html",
+            "path": "/docs/changelog/_main.html",
             "pages": [
                 {
                     "title": "v1.5.0 – Well Equipped",
                     "slug": "/w/Changelog/v1.5.0",
-                    "path": "/docs/changelog-v1-5-0.html"
+                    "path": "/docs/changelog/v1-5-0.html"
                 },
                 {
                     "title": "v1.4.0 – Seamless",
                     "slug": "/w/Changelog/v1.4.0",
-                    "path": "/docs/changelog-v1-4-0.html"
+                    "path": "/docs/changelog/v1-4-0.html"
                 },
                 {
                     "title": "v1.3.0 – In Sync",
                     "slug": "/w/Changelog/v1.3.0",
-                    "path": "/docs/changelog-v1-3-0.html"
+                    "path": "/docs/changelog/v1-3-0.html"
                 },
                 {
                     "title": "v1.2.0 – Take Control",
                     "slug": "/w/Changelog/v1.2.0",
-                    "path": "/docs/changelog-v1-2-0.html"
+                    "path": "/docs/changelog/v1-2-0.html"
                 },
                 {
                     "title": "v1.1.0 – Subtle Shift",
                     "slug": "/w/Changelog/v1.1.0",
-                    "path": "/docs/changelog-v1-1-0.html"
+                    "path": "/docs/changelog/v1.1.0.html"
                 }
             ]
         },

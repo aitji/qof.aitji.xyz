@@ -128,6 +128,13 @@
     /* layout */
     --content-max: 72ch;
     --content-wide: 90ch;
+
+    /* misc color */
+    --misc-dark-red: #ffc7ce;
+    --misc-red: #ff8787 ;
+    --misc-green: #c6efce;
+    --misc-lime: #5dcc5d;
+    --misc-cyan: #dfdfff;
 }
 
 /* overriden */
@@ -189,6 +196,13 @@ html[data-theme="dark"] {
     --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
     --shadow-hi: 0 0 0 3px rgba(241, 214, 82, 0.35);
+
+    /* misc color */
+    --misc-dark-red: #592c2c;
+    --misc-red: #533b3b;
+    --misc-green: #3b533c;
+    --misc-lime: #29542c;
+    --misc-cyan: #242f2e;
 }
 
 @font-face {

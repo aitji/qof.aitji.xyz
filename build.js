@@ -81,7 +81,9 @@ const minifyHTMLFile = async file => {
             keepClosingSlash: true,
             html5: true
         })
-        fs.writeFileSync(file, banner.html + out)
+
+        if (file.includes('docs')) fs.writeFileSync(file, out)
+        else fs.writeFileSync(file, banner.html + out)
     } catch (error) { console.error(`[HTML] error processing ${file}: ${error.message}`) }
 }
 
