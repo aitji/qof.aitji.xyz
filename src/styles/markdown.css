@@ -395,10 +395,16 @@ blockquote cite {
     font-style: normal;
     color: var(--color-text-3);
     margin-top: var(--sp-2);
+    cursor: default;
 }
 
 blockquote cite::before {
     content: '— ';
+}
+
+blockquote cite::selection {
+    background-color: transparent;
+    color: var(--color-text-3);
 }
 
 /* list */
@@ -595,6 +601,7 @@ table {
     white-space: nowrap;
     justify-content: center;
     align-items: center;
+    vertical-align: middle;
 }
 
 .x64 {
@@ -613,8 +620,18 @@ table {
 }
 
 .pixel>a>img,
-.pixel>img {
+.pixel>img,
+p .pixel {
+    border-radius: 0;
     border: none;
+    background-color: transparent;
+}
+
+p .pixel {
+    margin-top: -3px;
+}
+
+p .pixel::selection {
     background-color: transparent;
 }
 
@@ -712,7 +729,7 @@ td b:only-child {
 /* merged cells */
 td[rowspan],
 th[rowspan] {
-    height: 1px;    
+    height: 1px;
     vertical-align: middle;
     background-color: var(--color-th-bg);
 }
