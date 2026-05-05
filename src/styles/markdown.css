@@ -589,8 +589,12 @@ table {
 
 /* img pixel */
 .pixel {
-    display: inline-block;
+    display: inline-flex;
     image-rendering: pixelated;
+    aspect-ratio: 1/1;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .x64 {
@@ -708,6 +712,7 @@ td b:only-child {
 /* merged cells */
 td[rowspan],
 th[rowspan] {
+    height: 1px;    
     vertical-align: middle;
     background-color: var(--color-th-bg);
 }
@@ -748,6 +753,11 @@ td>table tr:hover {
 
 td>table td:first-child {
     padding-left: 0;
+}
+
+td:has(img):first-child {
+    width: 1%;
+    white-space: nowrap;
 }
 
 /* details */
