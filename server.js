@@ -5,7 +5,6 @@ import path from 'path'
 import { spawn } from 'child_process'
 
 const USE_HTTPS = process.argv.includes('--https')
-const PORT = parseInt(process.argv.find(a => a.startsWith('--port='))?.split('=')[1] ?? '3000')
 const OUT = 'public'
 
 let spaRoutes = []
@@ -27,11 +26,11 @@ const loadSpaRoutes = () => {
         if (fs.existsSync(routesFile)) {
             const data = JSON.parse(fs.readFileSync(routesFile, 'utf8'))
             spaRoutes = collectSlugs(data.routes)
-            console.log(`[server] loaded spa routes: ${spaRoutes.join(', ')}`)
+            console.log(`[server] loaded spa routes (x${spaRoutes.length}): \n   - ${spaRoutes.join('\n   - ')}\n`)
         }
     } catch (e) {
         console.error('[server] failed to load routes:', e)
-        spaRoutes = ['/', '/about'] // fallback
+        spaRoutes = ['/']
     }
 }
 
@@ -71,7 +70,7 @@ const LIVERELOAD_SCRIPT = `
 <script>
 (function () {
     try { new EventSource('/__livereload').close() }
-    catch (e) { return console.warn('[live] EventSource not supported, live reload disabled') }
+    catch { return console.warn('[live] EventSource not supported, live reload disabled') }
 
     try {
         const es = new EventSource('/__livereload')
@@ -81,7 +80,7 @@ const LIVERELOAD_SCRIPT = `
             setTimeout(() => location.reload(), 1000)
         }
         console.log('[live] socket connected successfully')
-    } catch (e) {}
+    } catch {}
 })()</script>`
 
 const clients = new Set()
@@ -224,8 +223,16 @@ const handler = (req, res) => {
     }
 }
 
-let server
+const HTTP_PORT = 80
+const HTTPS_PORT = 443
+http.createServer((req, res) => {
+    const host = req.headers.host?.replace(/:\d+$/, '') ?? 'localhost'
+    const location = `https://${host}${req.url}`
+    res.writeHead(301, { Location: location })
+    res.end()
+}).listen(HTTP_PORT, () => console.log(`  [live] HTTP:${HTTP_PORT} → HTTPS:${HTTPS_PORT} redirect on http://localhost`))
 
+let server
 if (USE_HTTPS) {
     const certFile = process.argv.find(a => a.startsWith('--cert='))?.split('=')[1] ?? 'localhost+2.pem'
     const keyFile = process.argv.find(a => a.startsWith('--key='))?.split('=')[1] ?? 'localhost+2-key.pem'
@@ -242,11 +249,12 @@ if (USE_HTTPS) {
     }, handler)
 } else server = http.createServer(handler)
 
-server.listen(PORT, () => {
+server.listen(HTTPS_PORT, () => {
     const proto = USE_HTTPS ? 'https' : 'http'
-    console.log(`\n  [live] Server running at ${proto}://localhost:${PORT}`)
+    console.log(`\n  [live] Server running at ${proto}://localhost`)
     console.log(`  [live] Watching: ${OUT}/`)
     console.log(`  [live] Press Ctrl+C to stop\n`)
+    console.log(`~~~~~~~~~~~~~~~~~~~~ Live Logs ~~~~~~~~~~~~~~~~~~~~`)
 })
 
 const builder = spawn('node', ['build.js', '--watch'], { stdio: 'inherit' })
