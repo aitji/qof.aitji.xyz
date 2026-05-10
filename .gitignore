@@ -8,6 +8,8 @@
 note.*
 * copy
 *.cmd
+*.zip
+*.7z
 
 key.pem
 cert.pem
