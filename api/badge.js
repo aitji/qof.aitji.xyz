@@ -95,10 +95,9 @@ export default async function handler(req, res) {
   const svg = buildBadgeSvg({ label, value, isError, rounded })
   res.setHeader('Content-Type', 'image/svg+xml; charset=utf-8')
   res.setHeader(
-    'Cache-Control',
-    'public, max-age=300, s-maxage=300, stale-while-revalidate=600'
-  )
-
+  'Cache-Control',
+  'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'
+)
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.status(200).send(svg)
 }
