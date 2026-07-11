@@ -148,6 +148,18 @@ h6 {
 }
 
 /* p & inline */
+flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+}
+
+flex img {
+    margin: 0 0 !important;
+    vertical-align: middle;
+}
+
 .indent,
 indent {
     margin-left: 20px;
@@ -548,6 +560,12 @@ muted b {
 .img {
     object-fit: cover;
     margin: 0;
+}
+
+.img--no-border {
+    border-color: transparent;
+    border-radius: 0 !important;
+    border: none !important;
 }
 
 .img--w600 {

@@ -86,10 +86,12 @@
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/markdown.css">
     <link rel="stylesheet" href="/styles/abbr.css">
+    <link rel="stylesheet" href="/styles/lightbox.css">
 
     <script src="/scripts/fuse.js"></script>
     <script src="/scripts/theme.js"></script>
     <script src="/scripts/abbr.js" defer></script>
+    <script src="/scripts/lightbox.js" defer></script>
 </head>
 
 <body>
@@ -238,6 +240,66 @@
                     <span class="ext-card-footer-text">Opens in new tab</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Lightbox image">
+
+            <div class="loader">
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-dasharray="42 18">
+                        <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12"
+                            dur="0.8s" repeatCount="indefinite" />
+                    </circle>
+                </svg>
+            </div>
+        </div>
+
+        <div class="lightbox-controls">
+            <button class="lightbox-btn" id="save-btn" title="Save Image">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+
+            <button class="lightbox-btn" id="close-btn" title="Close">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="lightbox-btn" id="zoom-in-btn" title="Zoom In">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M10 7v6M7 10h6M15 15l5 5" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <button class="lightbox-btn" id="zoom-out-btn" title="Zoom Out">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2" />
+                    <path d="M7 10h6M15 15l5 5" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <button class="lightbox-btn" id="reset-btn" title="Reset View">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M4 4v6h6M20 20v-6h-6" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20 10A8 8 0 0 0 6 6M4 14a8 8 0 0 0 14 4" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
         </div>
     </div>
 
