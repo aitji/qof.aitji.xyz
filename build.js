@@ -15,7 +15,7 @@ const WATCH = process.argv.includes('--watch')
 
 const ensure = p => fs.mkdirSync(p, { recursive: true })
 
-const headTag = ''
+const headTag = '<script async src="https://www.googletagmanager.com/gtag/js?id=G-3H6MXMVZPG"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3H6MXMVZPG");</script>'
 const bodyTag = ''
 const YEAR = new Date().getFullYear()
 const bannerText = `
