@@ -26,22 +26,75 @@
                 {
                     "title": "v1.5.0 – Well Equipped",
                     "slug": "/w/Changelog/v1.5.0",
-                    "path": "/docs/changelog/v1.5.0.html"
+                    "path": "/docs/changelog/v1.5.0.html",
+                    "pages": [
+                        {
+                            "title": "v1.4.1 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.4.1",
+                            "path": "/docs/changelog/v1.4.1.html"
+                        }
+                    ]
                 },
                 {
                     "title": "v1.4.0 – Seamless",
                     "slug": "/w/Changelog/v1.4.0",
-                    "path": "/docs/changelog/v1.4.0.html"
+                    "path": "/docs/changelog/v1.4.0.html",
+                    "pages": [
+                        {
+                            "title": "v1.3.1 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.3.1",
+                            "path": "/docs/changelog/v1.3.1.html"
+                        },
+                        {
+                            "title": "v1.3.2 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.3.2",
+                            "path": "/docs/changelog/v1.3.2.html"
+                        },
+                        {
+                            "title": "v1.3.3 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.3.3",
+                            "path": "/docs/changelog/v1.3.3.html"
+                        },
+                        {
+                            "title": "v1.3.4 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.3.4",
+                            "path": "/docs/changelog/v1.3.4.html"
+                        }
+                    ]
                 },
                 {
                     "title": "v1.3.0 – In Sync",
                     "slug": "/w/Changelog/v1.3.0",
-                    "path": "/docs/changelog/v1.3.0.html"
+                    "path": "/docs/changelog/v1.3.0.html",
+                    "pages": [
+                        {
+                            "title": "v1.2.1 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.2.1",
+                            "path": "/docs/changelog/v1.2.1.html"
+                        },
+                        {
+                            "title": "v1.2.2 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.2.2",
+                            "path": "/docs/changelog/v1.2.2.html"
+                        },
+                        {
+                            "title": "v1.2.3 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.2.3",
+                            "path": "/docs/changelog/v1.2.3.html"
+                        }
+                    ]
                 },
                 {
                     "title": "v1.2.0 – Take Control",
                     "slug": "/w/Changelog/v1.2.0",
-                    "path": "/docs/changelog/v1.2.0.html"
+                    "path": "/docs/changelog/v1.2.0.html",
+                    "pages": [
+                        {
+                            "title": "v1.1.1 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.1.1",
+                            "path": "/docs/changelog/v1.1.1.html"
+                        }
+                    ]
                 },
                 {
                     "title": "v1.1.0 – Subtle Shift",
