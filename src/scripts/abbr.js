@@ -8,6 +8,27 @@ const KEYWORDS = Object.freeze(
         ["beta api", "Experimental Application Programming Interface"],
 
         ["json", "JavaScript Object Notation"],
+        ["api", "Application Programming Interface"],
+        ["apis", "Application Programming Interfaces"],
+
+        ["ux", "User Experience"],
+        ["ui", "User Interface"],
+
+        ["mcfunction", "Minecraft Function"],
+        ["molang", "Minecraft Object-Oriented Language"],
+
+        ["nbt", "Named Binary Tag"],
+        ["ts", "TypeScript"],
+        ["gif", "Graphics Interchange Format"],
+        ["md", "Markdown"],
+        ["html", "HyperText Markup Language"],
+        ["css", "Cascading Style Sheets"],
+        ["js", "JavaScript"],
+        ["url", "Uniform Resource Locator"],
+        ["yaml", "YAML Ain't Markup Language"],
+        ["id", "Identifier"],
+        ["fps", "Frames Per Second"],
+        ["ui", "User Interface"],
     ])
 )
 

@@ -1,0 +1,278 @@
+<main>
+    <h1 id=qof-v130-s-in-sync-update>QoF v1.3.0's "In Sync" Update</h1>
+    <blockquote>A Minecraft Bedrock addon that adds small vanilla-friendly features. Each module is configurable through
+        the in-game pack settings panel. Requires <strong>BetaAPIs</strong> enabled under Experiments. <cite>note</cite>
+    </blockquote>
+    <h2 id=pack-info>Pack Info</h2>
+    <p>Full changelog: <a href=https://github.com/aitji/QoF/commits/v1.3.0>v1.3.0</a> or <a
+            href=https://github.com/aitji/QoF/compare/v1.2.0...v1.3.0>compare</a> Releases: <a
+            href=https://github.com/aitji/QoF/releases/tag/v1.3.0>v1.3.0</a> LICENSE: <a
+            href=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/LICENSE>MIT</a><br>Release Date: <a
+            href=https://time.is/Unix_time_converter/1774691490>Mar/28/2026 (09:51:30)</a>
+    <p>Base Game Version: <a
+            href=https://feedback.minecraft.net/hc/en-us/articles/44418129038733-Minecraft-Bedrock-Edition-26-10-Tiny-Takeover>26.10
+            Tiny-Takeover</a><br>Dependency: <a
+            href=https://www.npmjs.com/package/@minecraft/server/v/2.7.0-beta.1.26.10-stable>2.7.0@beta</a>
+    <h2 id=changelogs>Changelogs</h2>
+    <ul>
+        <li>Update base game version to <a
+                href=https://feedback.minecraft.net/hc/en-us/articles/44418129038733-Minecraft-Bedrock-Edition-26-10-Tiny-Takeover>26.10
+                Tiny-Takeover</a>
+        <li>Update Script API to <a
+                href=https://www.npmjs.com/package/@minecraft/server/v/2.7.0-beta.1.26.10-stable>2.7.0@beta</a>
+        <li>Fully rebrand from <code>QoL (Quality of Life)</code> to <code>QoF (Quality of Feature)</code>
+        <li>Add patch notes to every <a href=https://github.com/aitji/QoF/tree/sources/.github/changelogs>changelog</a>
+    </ul>
+    <h3 id=carried-container>Carried Container</h3>
+    <ul>
+        <li>Add a config option to allow climbing scaffolding and
+            ladders<br><code>note: we already have settings for allowing jumping in water & lava</code>
+    </ul>
+    <h3 id=crop--harvest>Crop / Harvest</h3>
+    <ul>
+        <li>Crop (<code>crop.js</code>) is now renamed to Harvest (<code>harvest.js</code>)
+        <li>When seeds drop on the ground and the player has no seeds, the dropped seeds used for replanting are reduced
+            by 1. The remaining seeds will have a <code>40 gametick</code> delay before the player can pick them up
+            again.
+    </ul>
+    <blockquote><strong>bug ref</strong>
+        <ul>
+            <li>Fix crop seed loss logic missing inverse sign
+            <li>Fix beetroot using wheat seeds when replanting
+        </ul>
+    </blockquote>
+    <h3 id=dynamic-light>Dynamic Light</h3>
+    <ul>
+        <li>Move from <code>minecraft:light_block</code> to <code>qof:light_block</code> for more customization
+        <li>Sea pickle now only works underwater
+        <li>Some items are now prevented from emitting light underwater
+    </ul>
+    <div class=table-wrap>
+        <table>
+            <tr>
+                <th><b>Item</b>
+                <th><b>Reaction</b>
+                <th><b>Level</b>
+            <tr>
+                <td>Campfire
+                <td>Won't emit light underwater
+                <td>15
+            <tr>
+                <td>Lantern
+                <td>Won't emit light underwater
+                <td>15
+            <tr>
+                <td>Lava Bucket
+                <td>Won't emit light underwater
+                <td>15
+            <tr>
+                <td>All Copper Lantern
+                <td>Won't emit light underwater
+                <td>15
+            <tr>
+                <td>Torch
+                <td>Won't emit light underwater
+                <td>14
+            <tr>
+                <td>Copper Torch
+                <td>Won't emit light underwater
+                <td>14
+            <tr>
+                <td>Soul Campfire
+                <td>Won't emit light underwater
+                <td>10
+            <tr>
+                <td>Soul Lantern
+                <td>Won't emit light underwater
+                <td>10
+            <tr>
+                <td>Soul Torch
+                <td>Won't emit light underwater
+                <td>10
+            <tr>
+                <td>Redstone Torch
+                <td>Won't emit light underwater
+                <td>7
+            <tr>
+                <td>Sea Pickle
+                <td><strong>Only</strong> emits light underwater
+                <td>6
+        </table>
+    </div>
+    <blockquote><strong>bug ref</strong>
+        <ul>
+            <li>Fix dynamic light preventing crop seeds from being placed on farmland
+            <li>Fix incorrect sound when placing nether wart on soul sand with dynamic light on top
+            <li>Fix piston pushing light blocks
+            <li>using hoe/shovel on dirt-type blocks no longer consumes durability in creative mode
+            <li>Fix visual bug where Minecraft displays destroy particles for light blocks
+            <li>Fix flint & steel and fire charge not working with items emitting light on the ground
+        </ul>
+    </blockquote>
+    <h3 id=offhand>Offhand</h3>
+    <ul>
+        <li>Double sneak window gap is now customizable on <code>Mobile</code>, <code>Console</code>, and
+            <code>Windows</code>
+        <li>Add more torch types for offhand placement
+    </ul>
+    <div class=table-wrap>
+        <table>
+            <tr>
+                <th><b>List of torch placement</b>
+            <tr>
+                <td>Torch
+            <tr>
+                <td>Redstone Torch
+            <tr>
+                <td>Copper Torch
+            <tr>
+                <td>Soul Torch
+        </table>
+    </div>
+    <blockquote><strong>bug ref</strong>
+        <ul>
+            <li>Fix offhand incorrectly reading enabled value from carried container module
+            <li>Fix torch duplication when spam clicking
+            <li>double sneak for offhand now resets <code>lastSneakTick</code> after swapping items
+        </ul>
+    </blockquote>
+    <h3 id=wet-concrete-powder>Wet Concrete Powder</h3>
+    <ul>
+        <li>Add <code>BASE</code> setting for how long before concrete powder hardens in water
+        <li>Add <code>MULTIPLIER</code> setting to scale the conversion time for concrete powder hardening in water
+    </ul>
+    <p>These settings are used in the formula:</p>
+    <p><code>DELAY = BASE + floor(sqrt(item_amount - 1) * MULTIPLIER)</code></p>
+    <h3 id=composter>Composter+</h3>
+    <blockquote><strong>bug ref</strong>
+        <ul>
+            <li>Fix composter not detecting when moved by piston
+        </ul>
+    </blockquote>
+    <h3 id=bug-fixes>Bug Fixes</h3>
+    <ul>
+        <li>Fix offhand incorrectly reading enabled value from carried container module
+        <li>Fix crop seed loss logic missing inverse sign
+        <li>Fix torch duplication when spam clicking
+        <li>Fix beetroot using wheat seeds when replanting
+        <li>Fix dynamic light preventing crop seeds from being placed on farmland
+        <li>Fix incorrect sound when placing nether wart on soul sand with dynamic light on top
+        <li>Fix piston pushing light blocks
+        <li>Using hoe/shovel on dirt-type blocks no longer consumes durability in creative mode
+        <li>Fix visual bug where Minecraft displays destroy particles for light blocks
+        <li>Fix composter not detecting when moved by piston
+        <li>Double sneak for offhand now resets <code>lastSneakTick</code> after swapping items
+        <li>Fix flint & steel and fire charge not working with items emitting light on the ground
+    </ul>
+    <h2 id=pre-release-changelogs-v12x>Pre-release Changelogs (v1.2.x)</h2>
+    <p>All updates from pre-releases are included in the v1.3.0 release.</p>
+    <details>
+        <summary><strong>v1.2.1 <a href=https://github.com/aitji/QoF/releases/tag/v1.2.1>Take me there</a></strong>
+        </summary>
+        <h3 id=v121>v1.2.1</h3>
+        <h4 id=bug-fixes-1>Bug Fixes</h4>
+        <ul>
+            <li>Wrapped <code>debug message</code> on startup to <code>DEBUG</code> mode
+            <li>Removed <code>debug message</code> from Dynamic Light
+            <li>Fixed some <code>technical debt</code> in <code>config.js</code> that might lead to misunderstandings in
+                the future
+            <li>Fixed a bug in <code>Carried Container</code> where player jump was not correctly set to
+                <code>true</code> when hitting an edge case
+        </ul>
+    </details>
+    <details>
+        <summary><strong>v1.2.2 <a href=https://github.com/aitji/QoF/releases/tag/v1.2.2>Take me there</a></strong>
+        </summary>
+        <h3 id=v122>v1.2.2</h3>
+        <h4 id=mob-loot>Mob Loot+</h4>
+        <p>Add mob loot to previously unlootable mobs</p>
+        <h5 id=1-sniffer-drop-moss-block>1. Sniffer Drop <code>Moss Block</code></h5>
+        <p><code>P(Drop) = 1</code></p>
+        <blockquote>Looting won't affect the drop range</blockquote>
+        <h5 id=1-piglin-brute-drop-gilded-blackstone>1. Piglin Brute Drop <code>Gilded BlackStone</code></h5>
+        <p><code>P(Drop) ∈ &lt;0, 1&gt;</code></p>
+        <blockquote>Looting won't affect the drop range</blockquote>
+        <h4 id=recipe>Recipe+</h4>
+        <p>A more accessible way to obtain items</p>
+        <h5 id=1-stripped-block-of-bamboo-to-charcoal-furnace->1. Stripped Block of Bamboo to Charcoal
+            (<code>Furnace</code>)</h5><img class="img img--ratio-16-9 img--w600"
+            src=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/.github/img/v1.2.2/charcoal-bamboo2.png
+            alt="Smelting stripped bamboo block to charcoal in furnace">
+        <muted><strong>alt-text</strong>: Smelting stripped bamboo block to charcoal in <em>furnace</em></muted>
+        <h5 id=2-dirt-with-root-to-rooted-dirt-crafting-table->2. Dirt with Root to Rooted Dirt
+            (<code>Crafting Table</code>)</h5><img class="img img--ratio-16-9 img--w600"
+            src=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/.github/img/v1.2.2/rooted_dirt.png
+            alt="Dirt & Root craft to Rooted Dirt in crafting table">
+        <muted><strong>alt-text</strong>: <code>Dirt & Root</code> craft to <code>Rooted Dirt</code> in <em>crafting
+                table</em></muted>
+        <blockquote>Recipes might be changed in the future update <cite>note</cite></blockquote>
+        <h5 id=3-skull-with-paper-to-banner-pattern-crafting-table->3. Skull with Paper to Banner Pattern
+            (<code>Crafting Table</code>)</h5><img class="img img--ratio-16-9 img--w600"
+            src=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/.github/img/v1.2.2/skull.png
+            alt="Skull & Paper craft to Banner Pattern in crafting table">
+        <muted><strong>alt-text</strong>: <code>Skull & Paper</code> craft to <code>Banner Pattern</code> in
+            <em>crafting table</em></muted>
+        <p><strong>Fix</strong></p>
+        <ul>
+            <li><code>stone_slab</code> to <code>normal_stone_slab</code>
+        </ul>
+        <p><strong>Removed</strong></p>
+        <ul>
+            <li>Rotten Fresh Hide (<code>Furnace, Smoker, Campfire, Soul Campfire</code>)
+            <li>Charcoal to Block of Coal (<code>Crafting Table</code>)
+        </ul>
+        <h4 id=configs>Configs</h4>
+        <ul>
+            <li>Offhand is now configurable through in-game world settings
+        </ul>
+        <h4 id=new-offhand>(New) Offhand</h4>
+        <ul>
+            <li>Allow players to double sneak to swap the behavior_packs hand and offhand
+            <li><code>work as intend</code> Enchantments and item color still cannot be transferred due to
+                <code>API limitations</code> that do not allow editing the offhand cleanly
+        </ul>
+        <h4 id=new-harvest>(New) Harvest</h4>
+        <ul>
+            <li>Allow players to hold a hoe and harvest crops with automatic seed replanting
+            <li>Hoe will lose durability* when destroying the crop in order to balance auto replanting<br>* Durability
+                is calculated based on the real Minecraft formula <code>Loss = random &lt; 1 / (level + 1)</code>
+        </ul>
+        <h4 id=composter-1>Composter+</h4>
+        <ul>
+            <li>Composter no longer uses a hard-coded vanilla list to check if an item is compostable, and now uses the
+                official compostable item component
+            <li>Added bowl return logic inside hopper logic
+        </ul>
+        <h4 id=dev-side--bug-fixes>Dev Side & Bug Fixes</h4>
+        <ul>
+            <li>Fixed grammar in <code>manifest.json</code>
+            <li>Fixed concrete powder trying to spawn items in an unloaded chunk
+            <li>Fixed light blocks trying to place in an unloaded chunk
+            <li>Fixed shovel and hoe not working when a light block is above dirt-type blocks
+            <li>Bumped <code>@minecraft</code> in <code>package.json</code> from <code>^2.5.0</code> to
+                <code>^2.6.0-beta.1.26.3-stable</code>, giving developers more tools to work with
+        </ul>
+    </details>
+    <details>
+        <summary><strong>v1.2.3 <a href=https://github.com/aitji/QoF/releases/tag/v1.2.3>Take me there</a></strong>
+        </summary>
+        <h3 id=v123>v1.2.3</h3>
+        <ul>
+            <li>Re-branding from <code>QoL (Quality of Life)</code> to <code>QoF (Quality of Feature)</code>
+        </ul>
+        <blockquote>No need to update to this version yet. This change only introduces the rebranding.<p>We are
+                preparing for <code>v1.3.0</code>. You can follow the progress on the main branch
+                (<code>behavior_packs (main)</code>, <code>resource_packs</code>), but pre-releases are currently highly
+                suppressed ;\) <cite>note</cite></blockquote>
+    </details>
+    <blockquote>Older releases&pre-releases can be found <a href=https://github.com/aitji/QoF/releases>here</a>
+        <cite>note</cite></blockquote>
+    <h2 id=license>License</h2>
+    <p>This project is licensed under the <a href=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/LICENSE>MIT License</a>.
+    </p>
+    <h2 id=credits>Credits</h2>
+    <ul>
+        <li>@aitji scripting & design
+        <li>@pickerth-12 design, json & molang
+    </ul>
+</main>

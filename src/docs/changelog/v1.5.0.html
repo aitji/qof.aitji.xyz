@@ -1,0 +1,339 @@
+<main>
+    <h1 id=qof-v1-5-0-s-well-equipped-update>QoF v1.5.0's "Well Equipped" Update</h1>
+    <blockquote>A Minecraft Bedrock addon that adds small vanilla-friendly features. Each module is configurable through
+        the in-game pack settings panel. Requires <strong>BetaAPIs</strong> enabled under Experiments.<cite>note</cite>
+    </blockquote>
+    <h2 id=pack-info>Pack Info</h2>
+    <p>Full changelog: <a href=https://github.com/aitji/QoF/commits/v1.5.0>v1.5.0</a> or <a
+            href=https://github.com/aitji/QoF/compare/v1.4.0...v1.5.0>compare</a> Releases: <a
+            href=https://github.com/aitji/QoF/releases/tag/v1.5.0>v1.5.0</a> LICENSE: <a
+            href=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/LICENSE>MIT</a><br>Release Date: <a
+            href=https://time.is/Unix_time_converter/1776567259>Apr/19/2026 (02:54:19)</a>
+    <p>Base Game Version: <a
+            href=https://feedback.minecraft.net/hc/en-us/articles/44732288765837-Minecraft-Bedrock-Edition-26-12-Hotfix-Changelog>26.12</a><br>Dependency:
+        <a href=https://www.npmjs.com/package/@minecraft/server/v/2.7.0-beta.1.26.10-stable>2.7.0@beta</a>
+    <h2 id=changelog>Changelog</h2>
+    <ul>
+        <li>A full wiki is now available on GitHub. You can explore it here: <a
+                href=https://github.com/aitji/QoF/wiki>https://github.com/aitji/QoF/wiki</a></li>
+        <li>The project has been rewritten in TypeScript for better structure and maintainability</li>
+        <li>Pre-releases will no longer be published to CurseForge or MCPEDL due to the 2-week update cycle limitation.
+            You can still find the latest pre-releases on GitHub: <a
+                href=https://github.com/aitji/QoF/releases>https://github.com/aitji/QoF/releases</a></li>
+        <li>The <code>scripts</code> folder has been restructured to make future module development easier</li>
+        <li>Frequently accessed data is now cached in memory instead of being fetched repeatedly from the API, improving
+            performance</li>
+        <li>The build system has been updated. Ignore rules are no longer hardcoded in YAML files and are now handled
+            via <code>/build.gitignore</code></li>
+        <li>All preview and showcase images have been compressed, reducing total size from <code>206.3MB</code> to
+            <code>103.2MB</code></li>
+        <li>The heartbeat checker (mcfunction-based) may impact performance. It can now be disabled in the in-game
+            settings panel. It is enabled by default as it helps non-power users</li>
+    </ul>
+    <h3 id=debug>Debug</h3>
+    <p>Debug mode is intended for developers who want to explore or test internal systems. It now includes new tools:
+    </p>
+    <ul>
+        <li><code>/dyp</code> dynamic property tools (list, list with values, bulk actions)</li>
+        <li><code>/cache</code> retrieve cached data from player or world</li>
+        <li><code>/components</code> dump block or item component lists (names only)</li>
+        <li><code>/dampening</code> obtain the light dampening block with value</li>
+    </ul>
+    <blockquote>These tools are only available when <code>DEBUG</code> is set to <code>true</code>. This can be toggled
+        in the in-game settings panel<cite>note</cite></blockquote>
+    <h3 id=new-unwaxed-sign>(New) Unwaxed Sign</h3>
+    <ul>
+        <li>Signs can now be unwaxed using an axe</li>
+        <li>Durability is consumed by default, but this can be configured in the in-game settings panel</li>
+    </ul>
+    <h3 id=new-cauldron> (New) Cauldron+</h3>
+    <p>Cauldrons in Bedrock Edition now have expanded functionality with QoF (Quality of Feature).</p>
+    <div class=table-wrap>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Dye</th>
+                    <th>Clean</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Carpet</td>
+                    <td><code>#</code> Carpet</td>
+                    <td>White Carpet</td>
+                </tr>
+                <tr>
+                    <td>Wool</td>
+                    <td><code>#</code> Wool</td>
+                    <td>White Wool</td>
+                </tr>
+                <tr>
+                    <td>Concrete</td>
+                    <td><code>#</code> Concrete</td>
+                    <td>White Concrete</td>
+                </tr>
+                <tr>
+                    <td>Concrete Powder</td>
+                    <td><code>#</code> Concrete Powder</td>
+                    <td>White Concrete Powder</td>
+                </tr>
+                <tr>
+                    <td>Glass</td>
+                    <td><code>#</code> Stained Glass</td>
+                    <td>Glass</td>
+                </tr>
+                <tr>
+                    <td>Glass Pane</td>
+                    <td><code>#</code> Stained Glass Pane</td>
+                    <td>Glass Pane</td>
+                </tr>
+                <tr>
+                    <td>Hardened Clay</td>
+                    <td><code>#</code> Terracotta</td>
+                    <td>Hardened Clay</td>
+                </tr>
+                <tr>
+                    <td><code>#</code> Terracotta</td>
+                    <td><code>#</code> Terracotta</td>
+                    <td>Hardened Clay</td>
+                </tr>
+                <tr>
+                    <td><code>#</code> Glazed Terracotta</td>
+                    <td><code>#</code> Glazed Terracotta</td>
+                    <td>White Glazed Terracotta</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <blockquote><strong>Note</strong>
+        <ul>
+            <li><code>#</code> represents any color</li>
+            <li>Shulkers, banners, and bundles are not supported due to NBT limitations</li>
+        </ul>
+    </blockquote>
+    <h3 id=dynamic-light>Dynamic Light</h3>
+    <ul>
+        <li>Magma Cubes now emit light at level <code>9</code></li>
+    </ul>
+    <blockquote>Light level is still affected by reduction settings<cite>note</cite></blockquote>
+    <h3 id=carried-container>Carried Container</h3>
+    <ul>
+        <li>Item names shown in lore now use client-side localization</li>
+    </ul>
+    <blockquote>Example change: <code>minecraft:trapped_chest</code> -&gt;
+        <code>tile.trapped_chest.name</code><cite>note</cite></blockquote>
+    <h3 id=offhand>Offhand</h3>
+    <ul>
+        <li><code>Spear</code> has been added to the always-usable list</li>
+        <li>Players can now place blocks directly from the offhand<blockquote><em><strong>Dev note</strong></em>: sound
+                implementation is not yet complete due to technical limitations</blockquote>
+        </li>
+        <li><code>Bamboo</code>, <code>Torch</code>, and <code>Slabs</code> are handled differently from standard blocks
+        </li>
+        <li>New replaceable blocks added: <code>Snow Layer</code>, <code>Fire</code>, <code>Soul Fire</code>,
+            <code>Crimson Roots</code>, <code>Warped Roots</code>, <code>Seagrass</code>, <code>Sculk Vein</code>, and
+            all types of <code>Dry Grass</code></li>
+    </ul>
+    <blockquote><strong>bug ref</strong>
+        <ul>
+            <li>Fixed an issue where placing a torch from the offhand would break adjacent blocks when placed on the
+                side (introduced in dev-release v1.4.1)</li>
+        </ul>
+    </blockquote>
+    <h3 id=recipes>Recipes+</h3>
+    <h3 id=crafting>Crafting</h3>
+    <ul>
+        <li>The vanilla <code>minecraft:paper</code> recipe can now be crafted directly in the inventory</li>
+    </ul>
+    <div class=table-wrap>
+        <table>
+            <thead>
+                <tr>
+                    <th>Crafting recipe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img class="img img--ratio-16-9 img--w600"
+                            src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/paper.png
+                            alt="paper crafting recipe"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul>
+        <li>Added more color combination recipes, also craftable directly in the inventory</li>
+    </ul>
+    <details>
+        <summary><strong>Color Combinations</strong></summary>
+        <div class=table-wrap>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crafting recipe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/black_green_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/black_yellow_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/blue_white_to_light_blue.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/blue_yellow_to_green.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/bww_to_light_gray.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/cyan_red_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/cyan_white_to_light_blue.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/cyan_yellow_to_green.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/green_white_to_lime.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/light_blue_gray_to_light_gray.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/light_blue_green_to_cyan.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/lime_black_to_green.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/lime_blue_to_cyan.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/magenta_blue_to_purple.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/magenta_green_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/magenta_white_to_pink.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/orange_blue_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/orange_white_to_pink.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/pink_blue_to_purple.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/pink_yellow_to_orange.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/purple_pink_to_magenta.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/red_blue_white_to_magenta.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/red_green_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/red_lime_to_orange.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/red_purple_to_magenta.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/rgy_to_brown.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                    <tr>
+                        <td><img class="img img--ratio-16-9 img--w600"
+                                src=https://raw.githubusercontent.com/aitji/QoF/refs/heads/sources/recipes/shapeless/colors/yellow_green_to_lime.png
+                                alt="color combination recipe"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </details>
+    <h4 id=stone-cutter>Stone Cutter</h4>
+    <ul>
+        <li>Add bamboo block, you can cut them normally like other wood now,
+            <code>some amount got reduce to balanced</code>, you can view more information here: <a
+                href=https://github.com/aitji/QoF/wiki/Recipes>https://github.com/aitji/QoF/wiki/Recipes</a></li>
+    </ul>
+    <h3 id=bug-fixes>Bug Fixes</h3>
+    <ul>
+        <li>Fixed an issue where placing a torch from the offhand would break adjacent blocks when placed on the side
+            (introduced in dev-release v1.4.1)</li>
+    </ul>
+    <h2 id=license>License</h2>
+    <p>This project is licensed under the <a href=https://cdn.jsdelivr.net/gh/aitji/QoF@sources/LICENSE>MIT License</a>.
+    </p>
+    <h2 id=credits>Credits</h2>
+    <ul>
+        <li>@aitji scripting &amp; design</li>
+        <li>@pickerth-12 design, json &amp; molang</li>
+    </ul>
+    <pre><code>QoF™
+Copyright (c) 2026 aitji &amp; pickerth-12 Licensed under the MIT License
+Source: github.com/aitji/QoF</code></pre>
+</main>
