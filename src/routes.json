@@ -19,6 +19,38 @@
             ]
         },
         {
+            "title": "Changelog",
+            "slug": "/w/Changelog",
+            "path": "/docs/changelog/_main.html",
+            "pages": [
+                {
+                    "title": "v1.5.0 – Well Equipped",
+                    "slug": "/w/Changelog/v1.5.0",
+                    "path": "/docs/changelog/v1.5.0.html"
+                },
+                {
+                    "title": "v1.4.0 – Seamless",
+                    "slug": "/w/Changelog/v1.4.0",
+                    "path": "/docs/changelog/v1.4.0.html"
+                },
+                {
+                    "title": "v1.3.0 – In Sync",
+                    "slug": "/w/Changelog/v1.3.0",
+                    "path": "/docs/changelog/v1.3.0.html"
+                },
+                {
+                    "title": "v1.2.0 – Take Control",
+                    "slug": "/w/Changelog/v1.2.0",
+                    "path": "/docs/changelog/v1.2.0.html"
+                },
+                {
+                    "title": "v1.1.0 – Subtle Shift",
+                    "slug": "/w/Changelog/v1.1.0",
+                    "path": "/docs/changelog/v1.1.0.html"
+                }
+            ]
+        },
+        {
             "title": "Modules",
             "slug": "/w/Modules",
             "path": "/docs/modules/_main.html",
@@ -138,38 +170,6 @@
                             "path": "/docs/recipe-removed.html"
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "title": "Changelog",
-            "slug": "/w/Changelog",
-            "path": "/docs/changelog/_main.html",
-            "pages": [
-                {
-                    "title": "v1.5.0 – Well Equipped",
-                    "slug": "/w/Changelog/v1.5.0",
-                    "path": "/docs/changelog/v1.5.0.html"
-                },
-                {
-                    "title": "v1.4.0 – Seamless",
-                    "slug": "/w/Changelog/v1.4.0",
-                    "path": "/docs/changelog/v1.4.0.html"
-                },
-                {
-                    "title": "v1.3.0 – In Sync",
-                    "slug": "/w/Changelog/v1.3.0",
-                    "path": "/docs/changelog/v1.3.0.html"
-                },
-                {
-                    "title": "v1.2.0 – Take Control",
-                    "slug": "/w/Changelog/v1.2.0",
-                    "path": "/docs/changelog/v1.2.0.html"
-                },
-                {
-                    "title": "v1.1.0 – Subtle Shift",
-                    "slug": "/w/Changelog/v1.1.0",
-                    "path": "/docs/changelog/v1.1.0.html"
                 }
             ]
         },
