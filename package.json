@@ -8,10 +8,8 @@
   "scripts": {
     "build": "node build.js",
     "dev-build": "node build.js --watch",
-
     "build_http": "npx serve public",
     "build_https": "npx serve public --ssl-cert localhost+2.pem --ssl-key localhost+2-key.pem",
-
     "http": "node server.js",
     "https": "node server.js --https"
   },
@@ -25,6 +23,11 @@
     "esbuild": "^0.27.3",
     "html-minifier-terser": "^7.2.0",
     "ignore": "^7.0.5",
-    "terser": "^5.46.0"
+    "terser": "^5.46.0",
+    "vercel": "^65.2.0"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.27.0": true
   }
 }
