@@ -24,6 +24,23 @@
             "path": "/docs/changelog/_main.html",
             "pages": [
                 {
+                    "title": "v1.6.0 – Unleashed",
+                    "slug": "/w/Changelog/v1.6.0",
+                    "path": "/docs/changelog/v1.6.0.html",
+                    "pages": [
+                        {
+                            "title": "v1.5.1 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.5.1",
+                            "path": "/docs/changelog/v1.5.1.html"
+                        },
+                        {
+                            "title": "v1.5.3 (Pre-Release)",
+                            "slug": "/w/Changelog/v1.5.3",
+                            "path": "/docs/changelog/v1.5.3.html"
+                        }
+                    ]
+                },
+                {
                     "title": "v1.5.0 – Well Equipped",
                     "slug": "/w/Changelog/v1.5.0",
                     "path": "/docs/changelog/v1.5.0.html",
