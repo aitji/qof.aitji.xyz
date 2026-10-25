@@ -88,9 +88,10 @@
     <link rel="stylesheet" href="/styles/abbr.css">
     <link rel="stylesheet" href="/styles/lightbox.css">
 
-    <script src="/scripts/fuse.js"></script>
+    <script src="/scripts/fuse.js" defer></script>
     <script src="/scripts/theme.js"></script>
     <script src="/scripts/abbr.js" defer></script>
+    <script src="/scripts/time.js" defer></script>
     <script src="/scripts/lightbox.js" defer></script>
 </head>
 
@@ -141,7 +142,7 @@
 
                 <div class="sidebar-controls">
                     <span class="routes-label">Pages</span>
-                    <span class="routes-count" id="routes-count">0</span>
+                    <span class="routes-count" id="routes-count"><!--ssg:count--></span>
                     <span class="spacer"></span>
                     <a class="btn-collapse" id="btn-collapse" title="Collapse all sections">Collapse</a>
                 </div>
@@ -151,14 +152,10 @@
             <div id="nav-results" role="listbox" aria-label="Search results"></div>
 
             <!-- nav tree -->
-            <nav class="sidebar-nav" id="sidebar-nav" aria-label="Documentation navigation">
-                <div class="nav-loading">
-                    <span>Loading...</span>
-                </div>
-            </nav>
+            <nav class="sidebar-nav" id="sidebar-nav" aria-label="Documentation navigation"><!--ssg:nav--></nav>
         </aside>
 
-        <div class="site-content" id="main-content" tabindex="-1"></div>
+        <div class="site-content" id="main-content" tabindex="-1"><!--ssg:content--></div>
     </div>
 
     <!-- footer -->

@@ -1,12 +1,6 @@
 (function () {
     'use strict'
-    const ROUTES_URL = '/routes.json'
     const SITE_TITLE = 'QoF Wiki'
-    const CACHE_VERSION = (() => {
-        try { return localStorage.getItem('router-version') || '' }
-        catch { return '' }
-    })()
-
     const progress = {
         el: null,
         _t: null,
@@ -64,51 +58,57 @@
 
     const router = {
         contentEl: null,
+        navEl: null,
         currentSlug: null,
         allRoutes: [],
+        _rootRoutes: [],
         cache: new Map(),
-        _routesLoaded: false,
+        _pending: new Map(),
 
-        async init() {
+        init() {
             this.contentEl = document.getElementById('main-content')
-            if (!this.contentEl) {
-                console.error('[router] #main-content not found')
+            this.navEl = document.getElementById('sidebar-nav')
+            if (!this.contentEl || !this.navEl) {
+                console.error('[router] #main-content / #sidebar-nav not found')
                 return
             }
 
-            let config // load data
-            try {
-                const res = await fetch(ROUTES_URL + (CACHE_VERSION ? '?v=' + CACHE_VERSION : ''))
-                if (!res.ok) throw new Error(`HTTP ${res.status}`)
-                config = await res.json()
-                this._routesLoaded = true
-            } catch (err) {
-                console.error('[router] failed to load routes.json:', err)
-                this.contentEl.innerHTML = this._errorHTML('Could not load navigation', 'Make sure routes.json exists.')
+            const rootList = this.navEl.querySelector(':scope > .nav-list')
+            if (!rootList) {
+                console.error('[router] sidebar was not prerendered')
                 return
             }
 
-            this._rootRoutes = config.routes
-            this._flattenRoutes(config.routes)
-            buildSidebar(config.routes)
+            this._rootRoutes = this._readList(rootList)
+            this._flattenRoutes(this._rootRoutes)
 
-            window.addEventListener('popstate', () => { this._navigateTo(window.location.pathname, false) })
-            this.contentEl.addEventListener('click', (e) => {
-                const a = e.target.closest('a[href]')
-                if (!a) return
-                const href = a.getAttribute('href')
-                if (!href || /^(https?:)?\/\//i.test(href) || href.startsWith('#') || href.startsWith('mailto:')) return
-                const route = this._findBySlug(href)
-                if (route) {
-                    e.preventDefault()
-                    this._navigateTo(href)
-                }
-            })
+            const countEl = document.getElementById('routes-count')
+            if (countEl) countEl.textContent = this.allRoutes.length
 
-            this._navigateTo(window.location.pathname, false)
+            this._bindSidebar()
+            this._bindContent()
+            window.addEventListener('popstate', () => this._navigateTo(location.pathname, false))
+
+            this.currentSlug = this._normalize(document.body.dataset.route || location.pathname)
+            progress.init()
+            if (window.QoFTime) QoFTime.apply(this.contentEl)
         },
 
         // route helpers
+        _normalize(slug) { return (slug || '/').split('#')[0].replace(/\/$/, '') || '/' },
+        _readList(ul) {
+            const out = []
+            for (const li of ul.children) {
+                const a = li.querySelector(':scope > .nav-row > .nav-link')
+                if (!a) continue
+                const route = { title: a.textContent.trim(), slug: a.dataset.slug, path: a.dataset.path || '' }
+                const sub = li.querySelector(':scope > .nav-children')
+                if (sub) route.pages = this._readList(sub)
+                out.push(route)
+            }
+            return out
+        },
+
         _flattenRoutes(routes) {
             for (const r of routes) {
                 this.allRoutes.push(r)
@@ -117,167 +117,135 @@
         },
 
         _findBySlug(slug) {
-            slug = slug.replace(/\/$/, '') || '/'
+            slug = this._normalize(slug)
             return this.allRoutes.find(r => r.slug === slug) ?? null
         },
 
+        _bindSidebar() {
+            this.navEl.addEventListener('click', (e) => {
+                const li = e.target.closest('.nav-item')
+                if (!li) return
+
+                if (e.target.closest('.nav-chevron')) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    li.classList.toggle('open')
+                    return
+                }
+
+                const hit = e.target.closest('.nav-link, .nav-badge')
+                if (!hit) return
+                if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return
+
+                e.preventDefault()
+                const slug = li.dataset.slug
+                if (li.classList.contains('has-children') && this.currentSlug === slug) li.classList.toggle('open')
+                else this.navigate(slug)
+            })
+
+            const warm = (e) => {
+                const a = e.target.closest?.('.nav-link')
+                if (a?.dataset.path) this._prefetch(a.dataset.path)
+            }
+            this.navEl.addEventListener('pointerover', warm)
+            this.navEl.addEventListener('focusin', warm)
+            this.navEl.addEventListener('touchstart', warm, { passive: true })
+        },
+
+        _bindContent() {
+            this.contentEl.addEventListener('click', (e) => {
+                const a = e.target.closest('a[href]')
+                if (!a) return
+                const href = a.getAttribute('href')
+                if (!href || /^(https?:)?\/\//i.test(href) || href.startsWith('#') || href.startsWith('mailto:')) return
+                if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return
+                if (this._findBySlug(href)) {
+                    e.preventDefault()
+                    this._navigateTo(href)
+                }
+            })
+
+            this.contentEl.addEventListener('pointerover', (e) => {
+                const a = e.target.closest?.('a[href^="/"]')
+                const route = a && this._findBySlug(a.getAttribute('href'))
+                if (route?.path) this._prefetch(route.path)
+            })
+        },
+
         // nav stuff
-        async _navigateTo(slug, pushHistory = true) {
-            slug = slug.replace(/\/$/, '') || '/'
+        async _navigateTo(target, pushHistory = true) {
+            const [rawPath, hash = ''] = target.split('#')
+            const slug = this._normalize(rawPath)
 
-            if (this.currentSlug === slug) return
-            this.currentSlug = slug
-
-            const route = this._findBySlug(slug)
-
-            if (!route) {
-                console.warn(`[router] unknown slug "${slug}"`)
-                window.location.href = slug
+            if (this.currentSlug === slug) {
+                if (hash) document.getElementById(decodeURIComponent(hash))?.scrollIntoView()
                 return
             }
 
-            // history
-            if (pushHistory && window.location.pathname !== slug)
-                history.pushState({ slug }, route.title ?? '', slug)
+            const route = this._findBySlug(slug)
+            if (!route) return window.location.href = target
+            this.currentSlug = slug
+
+            if (pushHistory && location.pathname !== slug)
+                history.pushState({ slug }, route.title ?? '', slug + (hash ? '#' + hash : ''))
 
             document.title = route.title ? `${route.title} – ${SITE_TITLE}` : SITE_TITLE
+            const canonical = document.querySelector('link[rel="canonical"]')
+            if (canonical) canonical.href = location.origin + (slug === '/' ? '' : slug)
+            document.body.dataset.route = slug
             syncActive(slug)
 
-            const filePath = route.path
-            if (!filePath || filePath === '/') {
+            if (!route.path || route.path === '/') {
                 this.contentEl.innerHTML = ''
                 return
             }
 
-            progress.start()
+            const cached = this.cache.has(route.path)
+            if (!cached) progress.start()
             try {
-                const html = await this._loadHTML(filePath)
-                this._render(html)
+                const html = await this._loadHTML(route.path)
+                if (this.currentSlug !== slug) return
+                this._render(html, hash)
                 progress.done()
             } catch (err) {
-                console.error(`[router] failed to load "${filePath}":`, err)
+                console.error(`[router] failed to load "${route.path}":`, err)
                 progress.error()
 
-                const html = await this._loadHTML("/418.html")
-                this._render(html)
+                const html = await this._loadHTML('/418.html')
+                if (this.currentSlug === slug) this._render(html)
             }
         },
 
-        async _loadHTML(path) {
-            if (this.cache.has(path)) return this.cache.get(path)
+        _loadHTML(path) {
+            if (this.cache.has(path)) return Promise.resolve(this.cache.get(path))
+            if (this._pending.has(path)) return this._pending.get(path)
 
-            const res = await fetch(path)
-            if (!res.ok) throw new Error(`HTTP ${res.status}`)
+            const task = fetch(path)
+                .then(res => {
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                    return res.text()
+                })
+                .then(html => { this.cache.set(path, html); return html })
+                .finally(() => this._pending.delete(path))
 
-            const html = await res.text()
-            this.cache.set(path, html)
-            return html
+            this._pending.set(path, task)
+            return task
         },
 
-        _render(html) {
+        _prefetch(path) { if (path) this._loadHTML(path).catch(() => { }) },
+
+        _render(html, hash = '') {
             this.contentEl.innerHTML = html
-            window.scrollTo({ top: 0, behavior: 'instant' })
-            this.contentEl.focus({ preventScroll: true })
-        },
+            if (window.QoFTime) QoFTime.apply(this.contentEl)
 
-        _errorHTML(title, detail) {
-            return `
-            <main>
-                <h2>${title}</h2>
-                <p>${detail}</p>
-            </main>`
+            const target = hash && document.getElementById(decodeURIComponent(hash))
+            if (target) target.scrollIntoView()
+            else window.scrollTo({ top: 0, behavior: 'instant' })
+            this.contentEl.focus({ preventScroll: true })
         },
 
         // public api
         navigate(slug) { this._navigateTo(slug, true) },
-
-        async initSidebar() {
-            let config
-            try {
-                const res = await fetch(ROUTES_URL + (CACHE_VERSION ? '?v=' + CACHE_VERSION : ''))
-                if (!res.ok) throw new Error(`HTTP ${res.status}`)
-                config = await res.json()
-            } catch (err) {
-                console.error('[router] initSidebar: failed to load routes.json:', err)
-                return
-            }
-            this._rootRoutes = config.routes
-            this._flattenRoutes(config.routes)
-            buildSidebar(config.routes)
-        },
-    }
-
-    // sidebar
-    function buildSidebar(routes) {
-        const nav = document.getElementById('sidebar-nav')
-        if (!nav) return
-        nav.innerHTML = ''
-        nav.appendChild(_buildList(routes, 0))
-
-        const countEl = document.getElementById('routes-count')
-        if (countEl) countEl.textContent = router.allRoutes.length
-    }
-
-    function _buildList(routes, depth) {
-        const ul = document.createElement('ul')
-        ul.className = 'nav-list' + (depth === 0 ? ' nav-root' : ' nav-children')
-        for (const route of routes) ul.appendChild(_buildItem(route, depth))
-        return ul
-    }
-
-    function _buildItem(route, depth) {
-        const clickEvent = (e) => {
-            e.preventDefault()
-            if (route.pages?.length && router.currentSlug === route.slug) li.classList.toggle('open')
-            else router.navigate(route.slug)
-        }
-        const li = document.createElement('li')
-        li.className = 'nav-item'
-        li.dataset.slug = route.slug
-
-        const row = document.createElement('div')
-        row.className = 'nav-row'
-
-        const a = document.createElement('a')
-        a.className = 'nav-link'
-        a.href = route.slug
-        a.dataset.slug = route.slug
-        a.addEventListener('click', (e) => clickEvent(e))
-
-        const linkText = document.createElement('span')
-        linkText.className = 'nav-link-text'
-        linkText.textContent = route.title
-        a.appendChild(linkText)
-        row.appendChild(a)
-
-        if (route.pages?.length) {
-            li.classList.add('has-children')
-
-            const badge = document.createElement('span')
-            badge.className = 'nav-badge'
-            badge.textContent = route.pages.length
-            badge.addEventListener('click', (e) => clickEvent(e))
-            row.appendChild(badge)
-
-            const chevron = document.createElement('button')
-            chevron.className = 'nav-chevron'
-            chevron.setAttribute('aria-label', `Toggle ${route.title}`)
-            chevron.setAttribute('aria-hidden', 'true')
-            chevron.setAttribute('tabindex', '-1')
-
-            chevron.addEventListener('click', (e) => {
-                e.preventDefault()
-                e.stopPropagation()
-                li.classList.toggle('open')
-            })
-
-            row.appendChild(chevron)
-
-            li.appendChild(row)
-            li.appendChild(_buildList(route.pages, depth + 1))
-        } else li.appendChild(row)
-
-        return li
     }
 
     // active state
@@ -288,6 +256,8 @@
         if (!link) return
 
         link.classList.add('active')
+        link.setAttribute('aria-current', 'page')
+        document.querySelectorAll('.nav-link[aria-current]').forEach(el => { if (el !== link) el.removeAttribute('aria-current') })
 
         const ancestors = new Set()
         let ancestor = link.closest('.nav-item')?.parentElement?.closest('.nav-item')
@@ -353,6 +323,7 @@
         if (!input || !resultsEl || !navEl) return
 
         let activeIdx = -1
+        let fuse = null
 
         function highlightNode(text, query) {
             const frag = document.createDocumentFragment()
@@ -403,7 +374,7 @@
             resultsEl.innerHTML = ''
 
             const ql = q.toLowerCase()
-            const fuse = new Fuse(router.allRoutes, {
+            fuse = fuse || new Fuse(router.allRoutes, {
                 keys: ['title', 'slug'],
                 threshold: 0.45,
                 ignoreLocation: true,
@@ -564,7 +535,6 @@
 
     // boot
     document.addEventListener('DOMContentLoaded', () => {
-        progress.init()
         initThemeToggle()
         initMobileSidebar()
         initSearch()

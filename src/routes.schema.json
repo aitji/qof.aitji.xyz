@@ -33,6 +33,10 @@
                 "path": {
                     "type": "string"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "metadata"
+                },
                 "pages": {
                     "type": "array",
                     "items": {

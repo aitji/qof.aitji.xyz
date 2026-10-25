@@ -163,7 +163,8 @@ const handler = (req, res) => {
     if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) filePath = path.join(filePath, 'index.html')
 
     let fileExists = fs.existsSync(filePath) // check if file exists
-    if (!fileExists && !path.extname(filePath)) { // extensionless files → try .html
+    const KNOWN_EXT = ['.js', '.css', '.json', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot', '.webp', '.mp4', '.webm', '.pdf', '.xml', '.txt', '.html']
+    if (!fileExists && !KNOWN_EXT.includes(path.extname(filePath).toLowerCase())) {
         // construct .html variant safely under the same root directory
         const rootDir = path.resolve(OUT)
         const relativeFromRoot = path.relative(rootDir, filePath)

@@ -88,6 +88,7 @@ html[data-theme="dark"] .qof-card-inner {
 }
 
 .abbr-card-def {
+    white-space: pre-line;
     font-family: var(--font-ui);
     font-size: var(--text-sm);
     color: var(--color-text);
@@ -234,4 +235,23 @@ html[data-theme="dark"] #ext-link-card .qof-card-inner {
     .ext-card-footer {
         display: none;
     }
+}
+
+time[data-ts] {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+time[data-ts] abbr[data-auto-abbr] {
+    text-decoration-color: var(--hi-dim);
+}
+
+time[data-ts] .time-rel,
+.tz-label {
+    color: var(--color-text-3);
+    font-weight: normal;
+}
+
+.tz-label {
+    font-size: 0.85em;
 }

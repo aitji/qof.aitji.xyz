@@ -1,21 +1,39 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": "public",
-    "routes": [
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "headers": [
         {
-            "handle": "filesystem"
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "Referrer-Policy",
+                    "value": "strict-origin-when-cross-origin"
+                }
+            ]
         },
         {
-            "src": "/img/(.*)",
-            "headers": {
-                "cache-control": "public, max-age=2592000, immutable"
-            }
+            "source": "/img/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=2592000, immutable"
+                }
+            ]
         },
         {
-            "src": "/routes.json",
-            "headers": {
-                "cache-control": "public, max-age=2592000, immutable"
-            }
+            "source": "/(scripts|styles)/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=3600, stale-while-revalidate=86400"
+                }
+            ]
         }
     ]
 }
